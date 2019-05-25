@@ -1,15 +1,12 @@
 package Business_Layer.Dto;
 
-import Data_Layer.Domain.Wallet;
 import lombok.*;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity(name = "Wallets")
 @Getter
 @Setter
 @Builder

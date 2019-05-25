@@ -9,8 +9,6 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
-@Entity(name = "Projects")
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"projectName"})})
 @Getter
 @Setter
 @Builder

@@ -32,8 +32,7 @@ public class Portfolio {
     @NotNull
     private Date issueDate;
 
-    @ManyToOne
-    @JoinColumn(name = "idUser", nullable = false)
+    @ManyToOne(optional = false)
     private User user;
 
     @OneToMany(mappedBy = "portfolio")

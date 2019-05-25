@@ -1,7 +1,6 @@
 package Data_Layer.Domain;
 
 import lombok.*;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -9,13 +8,13 @@ import javax.validation.constraints.Size;
 import java.sql.Date;
 import java.util.List;
 
-@Data
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
 @Entity(name = "Users")
 @Getter
 @Setter
 @NoArgsConstructor
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

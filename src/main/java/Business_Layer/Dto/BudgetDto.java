@@ -8,7 +8,6 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity(name = "Budgets")
 @Getter
 @Setter
 @Builder

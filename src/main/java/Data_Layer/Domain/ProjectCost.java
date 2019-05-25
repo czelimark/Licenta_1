@@ -19,10 +19,12 @@ public class ProjectCost {
     private Integer id;
 
     @NotNull
+    @ManyToOne
     @JoinColumn(name = "idProject", nullable = false)
     private Project project;
 
     @NotNull
+    @ManyToOne
     @JoinColumn(name = "idResource", nullable = false)
     private Resource resource;
 
