@@ -1,0 +1,26 @@
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+
+    <persistence-unit name="main-persistence-unit">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>Data_Layer.Domain.User</class>
+        <class>Data_Layer.Domain.Portfolio</class>
+        <class>Data_Layer.Domain.Project</class>
+        <class>Data_Layer.Domain.Resource</class>
+        <class>Data_Layer.Domain.ProjectCost</class>
+        <class>Data_Layer.Domain.Budget</class>
+        <class>Data_Layer.Domain.Wallet</class>
+        <class>Data_Layer.Domain.Month</class>
+        <class>Data_Layer.Domain.Cost</class>
+        <class>Data_Layer.Domain.Currency</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Licenta"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="comeon183764"/>
+            <property name="show_sql" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+        </properties>
+    </persistence-unit>
+</persistence>
