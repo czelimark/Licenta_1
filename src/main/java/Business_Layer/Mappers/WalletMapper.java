@@ -15,8 +15,7 @@ public class WalletMapper {
                 .walletName(dto.getWalletName())
                 .walletDescription(dto.getWalletDescription())
                 .allocatedMoney(dto.getAllocatedMoney())
-                .currencies(CurrencyMapper.toEntityList(dto.getCurrencies()))
-                .projects(ProjectMapper.toEntityList(dto.getProjects()))
+                .currency(CurrencyMapper.toEntity(dto.getCurrency()))
                 .build();
     }
 
@@ -25,8 +24,7 @@ public class WalletMapper {
                 .walletName(entity.getWalletName())
                 .walletDescription(entity.getWalletDescription())
                 .allocatedMoney(entity.getAllocatedMoney())
-                .currencies(CurrencyMapper.toDtoList(entity.getCurrencies()))
-                .projects(ProjectMapper.toDtoList(entity.getProjects()))
+                .currency(CurrencyMapper.toDto(entity.getCurrency()))
                 .build();
     }
 

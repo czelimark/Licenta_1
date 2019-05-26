@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity(name = "Months")
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"monthName"})})
@@ -24,6 +25,5 @@ public class Month {
     private String monthName;
 
     @ManyToOne
-    @JoinColumn(name = "idBudget", nullable = false)
-    private Budget budget;
+    private Project project;
 }

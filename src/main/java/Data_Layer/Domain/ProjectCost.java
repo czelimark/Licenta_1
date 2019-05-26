@@ -18,17 +18,13 @@ public class ProjectCost {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "idProject", nullable = false)
+    @ManyToOne(optional = false)
     private Project project;
 
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "idResource", nullable = false)
+    @ManyToOne(optional = false)
     private Resource resource;
 
     @NotNull
     @Size(min = 1)
-    private Double projectCost;
+    private Double resourceCost;
 }

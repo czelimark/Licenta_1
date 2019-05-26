@@ -10,7 +10,6 @@ public class PortfolioMapper {
 
     public static Portfolio toEntity(PortfolioDto dto) {
         return Portfolio.builder()
-                .id(dto.getId())
                 .portfolioName(dto.getPortfolioName())
                 .description(dto.getDescription())
                 .issueDate(dto.getIssueDate())
@@ -21,7 +20,6 @@ public class PortfolioMapper {
 
     public static PortfolioDto toDto(Portfolio entity) {
         return PortfolioDto.builder()
-                .id(entity.getId())
                 .portfolioName(entity.getPortfolioName())
                 .description(entity.getDescription())
                 .issueDate(entity.getIssueDate())

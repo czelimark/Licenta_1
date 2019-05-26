@@ -9,7 +9,7 @@ public class ProjectCostMapper {
 
     public static ProjectCost toEntity(ProjectCostDto dto) {
         return ProjectCost.builder()
-                .projectCost(dto.getProjectCost())
+                .resourceCost(dto.getResourceCost())
                 .project(ProjectMapper.toEntity(dto.getProject()))
                 .resource(ResourceMapper.toEntity(dto.getResource()))
                 .build();
@@ -17,7 +17,7 @@ public class ProjectCostMapper {
 
     public static ProjectCostDto toDto(ProjectCost entity) {
         return ProjectCostDto.builder()
-                .projectCost(entity.getProjectCost())
+                .resourceCost(entity.getResourceCost())
                 .project(ProjectMapper.toDto(entity.getProject()))
                 .resource(ResourceMapper.toDto(entity.getResource()))
                 .build();

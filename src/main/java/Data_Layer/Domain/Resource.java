@@ -28,10 +28,4 @@ public class Resource {
     @NotNull
     @Size(max = 100)
     private String usage;
-
-    @OneToMany(mappedBy = "resource")
-    private List<Currency> currencies;
-
-    @OneToMany(mappedBy = "resource")
-    private List<Cost> costs;
 }

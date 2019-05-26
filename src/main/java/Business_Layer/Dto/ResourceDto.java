@@ -23,8 +23,6 @@ public class ResourceDto implements Serializable {
 
     public static final long serialVersionUID = 87L;
 
-    private Integer id;
-
     @NotNull
     @Size(min = 1, max = 100)
     private String resourceName;
@@ -32,8 +30,4 @@ public class ResourceDto implements Serializable {
     @NotNull
     @Size(max = 100)
     private String usage;
-
-    private List<CurrencyDto> currencies;
-
-    private List<CostDto> costs;
 }

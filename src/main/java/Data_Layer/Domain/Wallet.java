@@ -33,12 +33,8 @@ public class Wallet {
     private Double allocatedMoney;
 
     @ManyToOne
-    @JoinColumn(name = "idUser", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "wallet")
-    private List<Currency> currencies;
-
-    @OneToMany(mappedBy = "wallet")
-    private List<Project> projects;
+    @ManyToOne
+    private Currency currency;
 }

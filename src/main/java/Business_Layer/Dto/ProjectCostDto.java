@@ -22,5 +22,5 @@ public class ProjectCostDto implements Serializable {
 
     @NotNull
     @Size(min = 1)
-    private Double projectCost;
+    private Double resourceCost;
 }

@@ -16,8 +16,6 @@ public class PortfolioDto implements Serializable {
 
     public static final long serialVersionUID = 81L;
 
-    private Integer id;
-
     @NotNull
     @Size(min = 1, max = 100)
     private String portfolioName;

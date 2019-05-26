@@ -13,4 +13,6 @@ public interface IUserService {
     UserDto getUserByUsername(String username);
 
     void updatePassword(String username, String password, String newPassword);
+
+    void addUser(UserDto userDto);
 }

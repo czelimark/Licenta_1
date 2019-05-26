@@ -24,11 +24,7 @@ public class Currency {
     @Size(max = 3)
     private String currencyName;
 
-    @ManyToOne
-    @JoinColumn(name = "walletId", nullable = false)
-    private Wallet wallet;
+    @OneToMany(mappedBy = "currency")
+    private List<Wallet> wallets;
 
-    @ManyToOne
-    @JoinColumn(name = "idResource", nullable = false)
-    private Resource resource;
 }

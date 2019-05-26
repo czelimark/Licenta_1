@@ -12,21 +12,15 @@ public class ResourceMapper {
 
     public static Resource toEntity(ResourceDto dto) {
         return Resource.builder()
-                .id(dto.getId())
                 .resourceName(dto.getResourceName())
                 .usage(dto.getUsage())
-                .currencies(CurrencyMapper.toEntityList(dto.getCurrencies()))
-                .costs(CostMapper.toEntityList(dto.getCosts()))
                 .build();
     }
 
     public static ResourceDto toDto(Resource entity) {
         return ResourceDto.builder()
-                .id(entity.getId())
                 .resourceName(entity.getResourceName())
                 .usage(entity.getUsage())
-                .currencies(CurrencyMapper.toDtoList(entity.getCurrencies()))
-                .costs(CostMapper.toDtoList(entity.getCosts()))
                 .build();
     }
 

@@ -1,6 +1,7 @@
 package Web_Layer.Controllers;
 
 import Business_Layer.Dto.PortfolioDto;
+import Business_Layer.Dto.UserDto;
 import Business_Layer.Services.IPortfolioService;
 import Business_Layer.Services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,12 @@ public class UserRestController {
     @PutMapping("/password")
     public ResponseEntity<?> putPassword(@RequestParam String password, @RequestParam String newPassword, Principal userr) {
         userService.updatePassword(userr.getName(), password, newPassword);
+        return ResponseEntity.ok(null);
+    }
+
+    @PutMapping("/register")
+    public ResponseEntity<?> putUser(@RequestParam UserDto userDto) {
+        userService.addUser(userDto);
         return ResponseEntity.ok(null);
     }
 

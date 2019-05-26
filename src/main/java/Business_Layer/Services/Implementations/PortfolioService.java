@@ -57,7 +57,7 @@ public class PortfolioService implements IPortfolioService {
         Portfolio portfolio = PortfolioMapper.toEntity(portfolioDto);
         User userr = userRepository.findByUsername(email).orElseThrow(ResourceNotFoundException::new);
         userr.getPortfolios().add(portfolio);
-        portfolio.setUserr(userr);
+        portfolio.setUser(userr);
         portfolioRepository.save(portfolio);
         portfolioRepository.flush();
     }

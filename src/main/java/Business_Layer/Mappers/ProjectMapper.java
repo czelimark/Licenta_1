@@ -12,7 +12,6 @@ public class ProjectMapper {
 
     public static Project toEntity(ProjectDto dto) {
         return Project.builder()
-                .id(dto.getId())
                 .projectName(dto.getProjectName())
                 .description(dto.getDescription())
                 .issueDate(dto.getIssueDate())
@@ -23,13 +22,13 @@ public class ProjectMapper {
                 .comments(dto.getComments())
                 .portfolio(PortfolioMapper.toEntity(dto.getPortfolio()))
                 .wallet(WalletMapper.toEntity(dto.getWallet()))
-                .budgets(BudgetMapper.toEntityList(dto.getBudgets()))
+                .costs(CostMapper.toEntityList(dto.getCosts()))
+                .months(MonthMapper.toEntityList(dto.getMonths()))
                 .build();
     }
 
     public static ProjectDto toDto(Project entity) {
         return ProjectDto.builder()
-                .id(entity.getId())
                 .projectName(entity.getProjectName())
                 .description(entity.getDescription())
                 .issueDate(entity.getIssueDate())
@@ -40,7 +39,8 @@ public class ProjectMapper {
                 .comments(entity.getComments())
                 .portfolio(PortfolioMapper.toDto(entity.getPortfolio()))
                 .wallet(WalletMapper.toDto(entity.getWallet()))
-                .budgets(BudgetMapper.toDtoList(entity.getBudgets()))
+                .costs(CostMapper.toDtoList(entity.getCosts()))
+                .months(MonthMapper.toDtoList(entity.getMonths()))
                 .build();
     }
 

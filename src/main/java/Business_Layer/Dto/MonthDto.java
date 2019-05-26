@@ -20,5 +20,5 @@ public class MonthDto implements Serializable {
     @Size(min = 10, max = 10)
     private String monthName;
 
-    private BudgetDto budget;
+    private ProjectDto project;
 }

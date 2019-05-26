@@ -32,7 +32,7 @@ public class Portfolio {
     @NotNull
     private Date issueDate;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     private User user;
 
     @OneToMany(mappedBy = "portfolio")

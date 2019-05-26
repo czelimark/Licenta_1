@@ -5,9 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.sql.Date;
 
 @Entity(name = "Costs")
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"costType"})})
 @Getter
 @Setter
 @Builder
@@ -20,10 +20,13 @@ public class Cost {
     private Integer id;
 
     @NotNull
-    @Size(min = 1)
+    @Size(min = 3)
+    private String costType;
+
+    @NotNull
     private Double cost;
 
+    @NotNull
     @ManyToOne
-    @JoinColumn(name = "idResursa", nullable = false)
-    private Resource resource;
+    private Project project;
 }

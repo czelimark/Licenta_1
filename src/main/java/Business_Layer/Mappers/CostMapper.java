@@ -2,6 +2,7 @@ package Business_Layer.Mappers;
 
 import Business_Layer.Dto.CostDto;
 import Data_Layer.Domain.Cost;
+import Data_Layer.Domain.Project;
 import lombok.experimental.UtilityClass;
 
 import java.util.List;
@@ -12,17 +13,17 @@ public class CostMapper {
 
     public static Cost toEntity(CostDto dto) {
         return Cost.builder()
-                .id(dto.getId())
+                .costType(dto.getCostType())
                 .cost(dto.getCost())
-                .resource(ResourceMapper.toEntity(dto.getResource()))
+                .project(ProjectMapper.toEntity(dto.getProject()))
                 .build();
     }
 
     public static CostDto toDto(Cost entity) {
         return CostDto.builder()
-                .id(entity.getId())
+                .costType(entity.getCostType())
                 .cost(entity.getCost())
-                .resource(ResourceMapper.toDto(entity.getResource()))
+                .project(ProjectMapper.toDto(entity.getProject()))
                 .build();
     }
 

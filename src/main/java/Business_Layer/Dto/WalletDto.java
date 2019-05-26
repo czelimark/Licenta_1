@@ -16,8 +16,6 @@ public class WalletDto implements Serializable {
 
     public static final long serialVersionUID = 82L;
 
-    private Integer id;
-
     @NotNull
     @Size(min = 1, max = 50)
     private String walletName;
@@ -33,8 +31,4 @@ public class WalletDto implements Serializable {
     private UserDto user;
 
     private CurrencyDto currency;
-
-    private List<CurrencyDto> currencies;
-
-    private List<ProjectDto> projects;
 }

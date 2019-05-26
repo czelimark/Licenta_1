@@ -1,5 +1,6 @@
 package Business_Layer.Dto;
 
+import Data_Layer.Domain.Cost;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,8 +18,6 @@ import java.util.List;
 public class ProjectDto implements Serializable {
 
     public static final long serialVersionUID = 80L;
-
-    private Integer id;
 
     @NotNull
     @Size(min = 1, max = 100)
@@ -51,5 +50,7 @@ public class ProjectDto implements Serializable {
 
     private WalletDto wallet;
 
-    private List<BudgetDto> budgets;
+    private List<CostDto> costs;
+
+    private List<MonthDto> months;
 }
