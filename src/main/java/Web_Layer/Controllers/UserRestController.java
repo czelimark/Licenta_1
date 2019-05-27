@@ -37,7 +37,7 @@ public class UserRestController {
         return ResponseEntity.ok(null);
     }
 
-    @PutMapping("/")
+    @PutMapping("/addPortfolio")
     public ResponseEntity<?> putPortfolio(@RequestBody PortfolioDto portfolioDto, Principal userr) {
         portfolioService.addPortfolio(userr.getName(), portfolioDto);
         return ResponseEntity.ok(null);
@@ -49,7 +49,7 @@ public class UserRestController {
         return ResponseEntity.ok(null);
     }
 
-    @PutMapping("/")
+    @PutMapping("/updatePortfolio")
     public ResponseEntity<?> updatePortfolio(@RequestBody PortfolioDto portfolioDto) {
         portfolioService.updatePortfolio(portfolioDto);
         return ResponseEntity.ok(null);

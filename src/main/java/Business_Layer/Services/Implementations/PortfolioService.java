@@ -55,7 +55,7 @@ public class PortfolioService implements IPortfolioService {
     @Override
     public void addPortfolio(String email, PortfolioDto portfolioDto) {
         Portfolio portfolio = PortfolioMapper.toEntity(portfolioDto);
-        User userr = userRepository.findByUsername(email).orElseThrow(ResourceNotFoundException::new);
+        User userr = userRepository.findByEmail(email).orElseThrow(ResourceNotFoundException::new);
         userr.getPortfolios().add(portfolio);
         portfolio.setUser(userr);
         portfolioRepository.save(portfolio);

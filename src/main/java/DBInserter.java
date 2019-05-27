@@ -41,10 +41,10 @@ public class DBInserter {
 
     private static void initResources() {
         resource1.setResourceName("Resource1");
-        resource1.setUsage("Usage1");
+        resource1.setResourceUsage("Usage1");
 
         resource1.setResourceName("Resource2");
-        resource1.setUsage("Usage2");
+        resource1.setResourceUsage("Usage2");
     }
 
 

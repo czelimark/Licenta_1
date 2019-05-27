@@ -13,14 +13,14 @@ public class ResourceMapper {
     public static Resource toEntity(ResourceDto dto) {
         return Resource.builder()
                 .resourceName(dto.getResourceName())
-                .usage(dto.getUsage())
+                .resourceUsage(dto.getResourceUsage())
                 .build();
     }
 
     public static ResourceDto toDto(Resource entity) {
         return ResourceDto.builder()
                 .resourceName(entity.getResourceName())
-                .usage(entity.getUsage())
+                .resourceUsage(entity.getResourceUsage())
                 .build();
     }
 

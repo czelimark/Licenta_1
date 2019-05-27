@@ -37,7 +37,7 @@ public class UserMvcController {
 
     @GetMapping("/profile")
     public ModelAndView getProfilePage(Principal userr) {
-        UserDto user = userService.getUserByUsername(userr.getNickname());
+        UserDto user = userService.getUserByEmail(userr.getNickname());
         return new ModelAndView("/profile")
                 .addObject("user",user);
     }

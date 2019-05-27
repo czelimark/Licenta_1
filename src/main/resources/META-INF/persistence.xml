@@ -13,7 +13,6 @@
         <class>Data_Layer.Domain.Project</class>
         <class>Data_Layer.Domain.ProjectCost</class>
         <class>Data_Layer.Domain.Wallet</class>
-        <class>Data_Layer.Domain.Budget</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Licenta"/>

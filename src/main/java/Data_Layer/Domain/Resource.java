@@ -27,5 +27,5 @@ public class Resource {
 
     @NotNull
     @Size(max = 100)
-    private String usage;
+    private String resourceUsage;
 }

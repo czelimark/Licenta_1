@@ -29,5 +29,5 @@ public class ResourceDto implements Serializable {
 
     @NotNull
     @Size(max = 100)
-    private String usage;
+    private String resourceUsage;
 }

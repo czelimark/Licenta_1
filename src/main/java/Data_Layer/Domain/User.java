@@ -8,8 +8,8 @@ import javax.validation.constraints.Size;
 import java.sql.Date;
 import java.util.List;
 
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
 @Entity(name = "Users")
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
 @Getter
 @Setter
 @NoArgsConstructor
@@ -41,6 +41,7 @@ public class User {
     private Boolean gender;
 
     @NotNull
+    @Size(min = 8, max = 15)
     private String phoneNumber;
 
     @Lob

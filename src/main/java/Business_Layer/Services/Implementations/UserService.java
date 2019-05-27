@@ -23,14 +23,14 @@ public class UserService implements IUserService {
     private IUserRepository userRepo;
 
     @Override
-    public UserDto getUserByUsername(String username) {
-        User user = userRepo.findByUsername(username).orElseThrow(ResourceNotFoundException::new);
+    public UserDto getUserByEmail(String email) {
+        User user = userRepo.findByEmail(email).orElseThrow(ResourceNotFoundException::new);
         return UserMapper.toDto(user);
     }
 
     @Override
-    public void updatePassword(String username, String password, String newPassword) {
-        User user = userRepo.findByUsername(username).orElseThrow(ResourceNotFoundException::new);
+    public void updatePassword(String email, String password, String newPassword) {
+        User user = userRepo.findByEmail(email).orElseThrow(ResourceNotFoundException::new);
         if (!BCrypt.checkpw(password, user.getPassword())) {
             throw new AccessForbiddenException();
         }

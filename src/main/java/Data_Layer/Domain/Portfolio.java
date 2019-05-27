@@ -8,8 +8,8 @@ import javax.validation.constraints.Size;
 import java.sql.Date;
 import java.util.List;
 
-@Entity(name = "Portofolios")
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"portofolioName"})})
+@Entity(name = "Portfolios")
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"portfolioName"})})
 @Getter
 @Setter
 @Builder

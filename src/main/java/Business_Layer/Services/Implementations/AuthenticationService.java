@@ -26,18 +26,18 @@ public class AuthenticationService implements AuthenticationManager, UserDetails
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String username = authentication.getPrincipal().toString();
+        String email = authentication.getPrincipal().toString();
         String password = authentication.getCredentials().toString();
-        Optional<User> user = userRepo.findByUsername(username);
+        Optional<User> user = userRepo.findByEmail(email);
         if (!user.isPresent() || !BCrypt.checkpw(password, user.get().getPassword())) {
             throw new BadCredentialsException(ExceptionMessages.INVALID_USERNAME_OR_PASSWORD);
         }
-        return new UsernamePasswordAuthenticationToken(username, password);
+        return new UsernamePasswordAuthenticationToken(email, password);
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepo.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(ExceptionMessages.INVALID_USERNAME));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepo.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(ExceptionMessages.INVALID_USERNAME));
         org.springframework.security.core.userdetails.User.UserBuilder builder;
         builder = org.springframework.security.core.userdetails.User.withUsername(user.getEmail());
         builder.password(user.getPassword());
