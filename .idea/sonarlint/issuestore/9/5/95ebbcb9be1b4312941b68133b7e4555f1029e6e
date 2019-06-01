@@ -1,7 +1,7 @@
 
-Isquid:S14525"&Remove usage of generic wildcard type.(ς•Γαώÿÿÿÿ8χνς®-
-Isquid:S1452#"&Remove usage of generic wildcard type.(’Ϋλϋÿÿÿÿ8™Ιωτ®-
-Isquid:S1452"&Remove usage of generic wildcard type.(μƒ‡νόÿÿÿÿ8χνς®-
-Dsquid:S1452)"&Remove usage of generic wildcard type.(φ«άΞ8χνς®-
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(δΠΤψÿÿÿÿ
-Dsquid:S1452/"&Remove usage of generic wildcard type.(­…©8χνς®-
+Gsquid:S1452"&Remove usage of generic wildcard type.(μƒ‡νόÿÿÿÿ8χνς®-
+Bsquid:S1452"&Remove usage of generic wildcard type.(φ«άΞ8χνς®-
+Gsquid:S1452"&Remove usage of generic wildcard type.(’Ϋλϋÿÿÿÿ8™Ιωτ®-
+Bsquid:S1452"&Remove usage of generic wildcard type.(­…©8χνς®-
+usquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(δΠΤψÿÿÿÿ
+Gsquid:S1452"&Remove usage of generic wildcard type.(ς•Γαώÿÿÿÿ8χνς®-
