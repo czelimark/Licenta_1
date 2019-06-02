@@ -9,9 +9,10 @@ import java.sql.Date;
 import java.util.List;
 
 @Entity(name = "Users")
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
 @Getter
 @Setter
+@Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
 public class User {
 
@@ -20,7 +21,7 @@ public class User {
     private Integer id;
 
     @NotNull
-    private String email;
+    private String username;
 
     @NotNull
     @Size(min = 8, max = 32)
@@ -54,8 +55,8 @@ public class User {
     private List<Wallet> wallets;
 
     @Builder
-    public User(String email, String password, String lastName, String firstName, Date birthDate, Boolean gender, String phoneNumber, String profilePhoto, List<Portfolio> portfolios, List<Wallet> wallets) {
-        this.email = email;
+    public User(String username, String password, String lastName, String firstName, Date birthDate, Boolean gender, String phoneNumber, String profilePhoto, List<Portfolio> portfolios, List<Wallet> wallets) {
+        this.username = username;
         this.password = password;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -65,5 +66,9 @@ public class User {
         this.profilePhoto = profilePhoto;
         this.portfolios = portfolios;
         this.wallets = wallets;
+    }
+
+    public String getRole() {
+        return this.getClass().getSimpleName().toUpperCase();
     }
 }

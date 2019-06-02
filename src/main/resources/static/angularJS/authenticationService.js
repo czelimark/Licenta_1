@@ -17,11 +17,17 @@
 
         function Login(username, password, callback) {
 
-            $http.post('/login', {username: username, password: password}, function (response) {
-                if (response.success) {
-                    callback(response);
+            $http({
+                method: 'POST',
+                url: '/login',
+                data: "username=" + username + "&" + "password=" + password,
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
                 }
-            });
+            })
+                .then(function (response) {
+                        callback(response);
+                });
         }
 
         function SetCredentials(username, password) {

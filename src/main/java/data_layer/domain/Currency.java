@@ -23,8 +23,4 @@ public class Currency {
     @NotNull
     @Size(max = 3)
     private String currencyName;
-
-    @OneToMany(mappedBy = "currency")
-    private List<Wallet> wallets;
-
 }

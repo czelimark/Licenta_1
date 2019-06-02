@@ -23,7 +23,6 @@ public class ProjectMapper {
                 .portfolio(PortfolioMapper.toEntity(dto.getPortfolio()))
                 .wallet(WalletMapper.toEntity(dto.getWallet()))
                 .costs(CostMapper.toEntityList(dto.getCosts()))
-                .months(MonthMapper.toEntityList(dto.getMonths()))
                 .build();
     }
 
@@ -40,7 +39,6 @@ public class ProjectMapper {
                 .portfolio(PortfolioMapper.toDto(entity.getPortfolio()))
                 .wallet(WalletMapper.toDto(entity.getWallet()))
                 .costs(CostMapper.toDtoList(entity.getCosts()))
-                .months(MonthMapper.toDtoList(entity.getMonths()))
                 .build();
     }
 

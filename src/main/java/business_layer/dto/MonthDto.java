@@ -18,6 +18,4 @@ public class MonthDto implements Serializable {
     @NotNull
     @Size(min = 10, max = 10)
     private String monthName;
-
-    private ProjectDto project;
 }

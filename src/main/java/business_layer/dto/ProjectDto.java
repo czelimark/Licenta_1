@@ -49,6 +49,4 @@ public class ProjectDto implements Serializable {
     private WalletDto wallet;
 
     private List<CostDto> costs;
-
-    private List<MonthDto> months;
 }

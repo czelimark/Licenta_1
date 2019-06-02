@@ -56,7 +56,4 @@ public class Project {
 
     @OneToMany(mappedBy = "project")
     private List<Cost> costs;
-
-    @OneToMany(mappedBy = "project")
-    private List<Month> months;
 }

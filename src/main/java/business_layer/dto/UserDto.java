@@ -20,7 +20,7 @@ public class UserDto implements Serializable {
     private static final long serialVersioUID = 8L;
 
     @NotNull
-    private String email;
+    private String username;
 
     @NotNull
     @Size(min = 8, max = 32)
@@ -50,9 +50,11 @@ public class UserDto implements Serializable {
 
     private List<WalletDto> wallets;
 
+    private String role;
+
     @Builder
-    public UserDto(String email, String password, String lastName, String firstName, Date birthDate, Boolean gender, String phoneNumber, String profilePhoto, List<PortfolioDto> portfolios, List<WalletDto> wallets) {
-        this.email = email;
+    public UserDto(String username, String password, String lastName, String firstName, Date birthDate, Boolean gender, String phoneNumber, String profilePhoto, List<PortfolioDto> portfolios, List<WalletDto> wallets, String role) {
+        this.username = username;
         this.password = password;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -62,5 +64,6 @@ public class UserDto implements Serializable {
         this.profilePhoto = profilePhoto;
         this.portfolios = portfolios;
         this.wallets = wallets;
+        this.role = role;
     }
 }

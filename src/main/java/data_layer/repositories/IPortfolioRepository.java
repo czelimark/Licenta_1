@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface IPortfolioRepository extends JpaRepository<Portfolio, Integer> {
 
-    @Query("SELECT p FROM Portfolios p WHERE p.user.email = (?1)")
-    List<Portfolio> findByUser(String email);
+    @Query("SELECT p FROM Portfolios p WHERE p.user.username = (?1)")
+    List<Portfolio> findByUser(String username);
 
     @Query("SELECT p FROM Portfolios p WHERE p.portfolioName = (?1)")
     Optional<Portfolio> findByName(String portfolioName);

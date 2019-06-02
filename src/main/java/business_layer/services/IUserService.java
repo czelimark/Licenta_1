@@ -7,12 +7,12 @@ public interface IUserService {
     /**
      * Get the correlated user dto for a specific email.
      *
-     * @param email
+     * @param username
      * @return
      */
-    UserDto getUserByEmail(String email);
+    UserDto getUserByUsername(String username);
 
-    void updatePassword(String email, String password, String newPassword);
+    void updatePassword(String username, String password, String newPassword);
 
     void addUser(UserDto userDto);
 }
