@@ -6,16 +6,21 @@
         .controller('RegisterController', RegisterController);
 
     RegisterController.$inject = ['UserService', '$location', '$rootScope', 'FlashService'];
-    function RegisterController(UserService, $location, FlashService) {
+    function RegisterController(UserService, $location, $rootScope, FlashService) {
         var vm = this;
+
+        $rootScope.options = [
+            {value: 0, name: 'Male'},
+            {value: 1, name: 'Female'},
+        ];
 
         vm.register = register;
 
         function register() {
             vm.dataLoading = true;
             UserService.Create(vm.user)
-                .then(function (response) {
-                    if (response.success) {
+                .then(function (response, status) {
+                    if (status == 200) {
                         FlashService.Success('Registration successful', true);
                         $location.path('/login');
                     } else {
@@ -24,6 +29,10 @@
                     }
                 });
         }
+
+        /*function update(value) {
+            vm.user.gender = value;
+        }*/
     }
 
 })();

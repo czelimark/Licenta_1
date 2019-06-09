@@ -144,13 +144,11 @@ public class DBInserter {
         portfolio1.setDescription("Description1");
         portfolio1.setIssueDate(Date.valueOf(LocalDate.now()));
         portfolio1.setUser(user1);
-        portfolio1.setProjects(Arrays.asList(project1, project2));
 
         portfolio2.setPortfolioName("Portfolio2");
         portfolio2.setDescription("Description2");
         portfolio2.setIssueDate(Date.valueOf(LocalDate.now()));
         portfolio2.setUser(user1);
-        portfolio2.setProjects(Arrays.asList(project1, project2));
     }
 
     private static void initUser() {
@@ -161,7 +159,5 @@ public class DBInserter {
         user1.setBirthDate(Date.valueOf(LocalDate.now().minusYears(20)));
         user1.setGender(false);
         user1.setPhoneNumber("0757383838");
-        user1.setPortfolios(Arrays.asList(portfolio1, portfolio2));
-        user1.setWallets(Arrays.asList(wallet1, wallet2));
     }
 }

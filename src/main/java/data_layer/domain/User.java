@@ -24,7 +24,7 @@ public class User {
     private String username;
 
     @NotNull
-    @Size(min = 8, max = 32)
+    @Size(min = 8)
     private String password;
 
     @NotNull
@@ -48,14 +48,8 @@ public class User {
     @Lob
     private String profilePhoto;
 
-    @OneToMany(mappedBy = "user")
-    private List<Portfolio> portfolios;
-
-    @OneToMany(mappedBy = "user")
-    private List<Wallet> wallets;
-
     @Builder
-    public User(String username, String password, String lastName, String firstName, Date birthDate, Boolean gender, String phoneNumber, String profilePhoto, List<Portfolio> portfolios, List<Wallet> wallets) {
+    public User(String username, String password, String lastName, String firstName, Date birthDate, Boolean gender, String phoneNumber, String profilePhoto) {
         this.username = username;
         this.password = password;
         this.lastName = lastName;
@@ -64,8 +58,6 @@ public class User {
         this.gender = gender;
         this.phoneNumber = phoneNumber;
         this.profilePhoto = profilePhoto;
-        this.portfolios = portfolios;
-        this.wallets = wallets;
     }
 
     public String getRole() {

@@ -33,8 +33,6 @@ public class Portfolio {
     private Date issueDate;
 
     @ManyToOne
+    @JoinColumn(name="idUser", nullable=false)
     private User user;
-
-    @OneToMany(mappedBy = "portfolio")
-    private List<Project> projects;
 }

@@ -4,13 +4,12 @@ import business_layer.dto.PortfolioDto;
 import business_layer.dto.UserDto;
 import business_layer.services.IPortfolioService;
 import business_layer.services.IUserService;
-import business_layer.services.impl.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @RequestMapping("/app")
@@ -27,6 +26,12 @@ public class UserRestController {
         this.portfolioService = portfolioService;
     }
 
+    @GetMapping("/user")
+    public ResponseEntity<?> getUser(Principal user) {
+        UserDto userr = userService.getUserByUsername(user.getName());
+        return ResponseEntity.ok(userr);
+    }
+
     @PutMapping("/password")
     public ResponseEntity<?> putPassword(@RequestParam String password, @RequestParam String newPassword, Principal userr) {
         userService.updatePassword(userr.getName(), password, newPassword);
@@ -34,9 +39,9 @@ public class UserRestController {
     }
 
     @PutMapping("/register")
-    public ResponseEntity<?> putUser(@RequestParam UserDto userDto) {
+    public ResponseEntity<?> putUser(@RequestBody UserDto userDto) {
         userService.addUser(userDto);
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok("User registered with success");
     }
 
     @PutMapping("/addPortfolio")
@@ -45,7 +50,7 @@ public class UserRestController {
         return ResponseEntity.ok(null);
     }
 
-    @DeleteMapping("/")
+    @DeleteMapping("/deletePortfolio")
     public ResponseEntity<?> deletePortfolio(@RequestBody PortfolioDto portfolioDto) {
         portfolioService.deletePortfolio(portfolioDto);
         return ResponseEntity.ok(null);
@@ -60,5 +65,11 @@ public class UserRestController {
     @GetMapping("/{portfolioName}")
     public PortfolioDto getPortfolio(@PathVariable String portfolioName) {
         return portfolioService.getPortfolio(portfolioName);
+    }
+
+    @GetMapping("/portfolios")
+    public ResponseEntity<?> getPortfolios(Principal user) {
+        List<PortfolioDto> portfolios = portfolioService.getPortfolios(user.getName());
+        return ResponseEntity.ok(portfolios);
     }
 }

@@ -23,7 +23,7 @@ public class UserDto implements Serializable {
     private String username;
 
     @NotNull
-    @Size(min = 8, max = 32)
+    @Size(min = 8)
     private String password;
 
     @NotNull
@@ -46,10 +46,6 @@ public class UserDto implements Serializable {
     @Lob
     private String profilePhoto;
 
-    private List<PortfolioDto> portfolios;
-
-    private List<WalletDto> wallets;
-
     private String role;
 
     @Builder
@@ -62,8 +58,6 @@ public class UserDto implements Serializable {
         this.gender = gender;
         this.phoneNumber = phoneNumber;
         this.profilePhoto = profilePhoto;
-        this.portfolios = portfolios;
-        this.wallets = wallets;
         this.role = role;
     }
 }

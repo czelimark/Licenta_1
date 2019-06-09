@@ -9,9 +9,9 @@
     config.$inject = ['$routeProvider', '$locationProvider'];
     function config($routeProvider, $locationProvider) {
         $routeProvider
-            .when('/', {
-                controller: 'HomeController',
-                templateUrl: 'templates/homeView.html',
+            .when('/portfolios', {
+                controller: 'PortfolioController',
+                templateUrl: 'templates/portfolioView.html',
                 controllerAs: 'vm'
             })
 

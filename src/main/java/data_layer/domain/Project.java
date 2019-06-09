@@ -49,6 +49,7 @@ public class Project {
     private String comments;
 
     @ManyToOne
+    @JoinColumn(name="idPortfolio", nullable=false)
     private Portfolio portfolio;
 
     @ManyToOne

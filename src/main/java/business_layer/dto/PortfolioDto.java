@@ -30,6 +30,4 @@ public class PortfolioDto implements Serializable {
     private Date issueDate;
 
     private UserDto user;
-
-    private List<ProjectDto> projects;
 }

@@ -32,11 +32,4 @@ public class UserMvcController {
         return new ModelAndView("/profile")
                 .addObject("user",user);
     }
-
-    @GetMapping("/portfolios")
-    public ModelAndView getPortfolioPage(Principal user) {
-        List<PortfolioDto> portfolios = portfolioService.getPortfolios(user.getName());
-        return new ModelAndView("/portfolios")
-                .addObject("portfolios", portfolios);
-    }
 }

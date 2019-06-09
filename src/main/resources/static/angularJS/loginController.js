@@ -23,10 +23,10 @@
                     AuthenticationService.SetCredentials(vm.username, vm.password);
                     $location.path('/');
                 } else {
-                    FlashService.Error(response.message);
+                    FlashService.Error("Your login attempts was incorrect, pleas try again");
                     vm.dataLoading = false;
                 }
-            }, function (transformRequest) {});
+            });
         };
     }
 

@@ -27,8 +27,6 @@ public class PortfolioService implements IPortfolioService {
     @Override
     public List<PortfolioDto> getPortfolios(String username) {
         List<Portfolio> portfolios = portfolioRepository.findByUser(username);
-        if(portfolios.size() == 0)
-            throw new ResourceNotFoundException();
         return PortfolioMapper.toDtoList(portfolios);
     }
 
@@ -56,7 +54,6 @@ public class PortfolioService implements IPortfolioService {
     public void addPortfolio(String username, PortfolioDto portfolioDto) {
         Portfolio portfolio = PortfolioMapper.toEntity(portfolioDto);
         User userr = userRepository.findByUsername(username).orElseThrow(ResourceNotFoundException::new);
-        userr.getPortfolios().add(portfolio);
         portfolio.setUser(userr);
         portfolioRepository.save(portfolio);
         portfolioRepository.flush();
