@@ -115,8 +115,6 @@ d
 4src/main/java/web_layer/utils/WebSecurityConfig.java,9\2\920d06ac3e76c6e51aff9ee7a737785dbe5f540f
 e
 5.idea/libraries/Maven__net_minidev_json_smart_2_3.xml,0\9\093eb2b2a937d8481d418db55efa4e87d44ed5fc
-a
-1src/main/resources/static/templates/homeView.html,e\c\ec87cbd658a9b1de2c1dc8c0fe55be7b441c96f5
 i
 9.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_5_1.xml,7\6\76bdc37d55d087980ee12b8a8b60393cc92667e5
 [
@@ -305,8 +303,6 @@ Z
 *src/main/java/data_layer/domain/Month.java,2\d\2dce604f26362f047a64413634d0e382d2f04723
 ]
 -src/main/java/data_layer/domain/Currency.java,8\8\88005a1929ac4cf1ee1e082f33c4b9ee7aa12e23
-e
-5src/main/resources/static/angularJS/homeController.js,b\d\bdd962404118b5cc44c758b5b4a1300c1421636f
 b
 2src/main/resources/static/angularJS/userService.js,f\e\fe3c1be5aa1c8cc0608a3a7d6c053618ced9ba46
 f
@@ -323,3 +319,7 @@ o
 ?src/main/java/data_layer/repositories/IPortfolioRepository.java,0\a\0a355e7c6f2c74f99e7cdfe0409ae3de1b2ca2d5
 l
 <src/main/resources/static/angularJS/authenticationService.js,c\1\c1c6ac7bbb81872282e0b4af7ec378a247681779
+j
+:src/main/resources/static/angularJS/portfolioController.js,5\0\505172183e3da28a13d2cf52193d0afcc694cdce
+f
+6src/main/resources/static/templates/portfolioView.html,f\c\fce2e65a8b7b232f890c0ac93cab2a8222e509cb

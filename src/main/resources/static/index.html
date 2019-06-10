@@ -2,13 +2,21 @@
 <html ng-app="app">
 <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Project Portfolio Management</title>
     <link rel="stylesheet" href="dependencies/bootstrap.min.css" />
     <link href="css/app.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
     <script src="dependencies/jquery-3.3.1.min.js"></script>
     <script src="dependencies/angular.min.js"></script>
     <script src="dependencies/angular-route.min.js"></script>
     <script src="dependencies/angular-cookies.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="app.js"></script>
     <script src="angularJS/authenticationService.js"></script>
@@ -22,13 +30,6 @@
     <script src="angularJS/registerController.js"></script>
 </head>
 <body>
-<div class="jumbotron">
-    <div class="container">
-        <div class="col-sm-8 col-sm-offset-2">
-            <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
-            <div ng-view></div>
-        </div>
-    </div>
-</div>
+    <div ng-view></div>
 </body>
 </html>

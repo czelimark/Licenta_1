@@ -21,7 +21,7 @@
             AuthenticationService.Login(vm.username, vm.password, function (response) {
                 if (!(response.data.indexOf("Bad") > -1)) {
                     AuthenticationService.SetCredentials(vm.username, vm.password);
-                    $location.path('/');
+                    $location.path('/portfolios');
                 } else {
                     FlashService.Error("Your login attempts was incorrect, pleas try again");
                     vm.dataLoading = false;

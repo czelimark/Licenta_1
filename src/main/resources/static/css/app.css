@@ -3,7 +3,48 @@ a {
 }
 
 .jumbotron {
-    padding-top: 0px;
-    padding-bottom:0px;
-    height: 100%;
+    height: 100vh;
+    margin-bottom: -20px;
+}
+
+.vertical-center {
+    min-height: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.portfolio {
+    padding: .5rem;
+    margin: 1rem 0;
+    background: #fff;
+    font-size: 1em;
+    line-height: 1.3em;
+    border-radius: 10px;
+    box-shadow: 0 0 0 4px #fff, 2px 2px 6px 3px rgba(10, 10, 0, 0.5);
+    font-weight: normal;
+}
+
+.portfolio > .row {
+    padding: 5px;
+}
+
+.fa {
+    cursor: pointer;
+    font-size: 1.3em;
+    margin: -10px 0 0 0;
+}
+
+.content {
+    padding: 2rem;
+    max-width: 1440px;
+}
+
+.buttons {
+    margin-top: 33px;
+    margin-left: inherit
+}
+
+.btn-link {
+    margin-right: 50px;
 }
