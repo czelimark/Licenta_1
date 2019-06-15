@@ -1,6 +1,7 @@
 package business_layer.mappers;
 
 import business_layer.dto.WalletDto;
+import data_layer.domain.User;
 import data_layer.domain.Wallet;
 import lombok.experimental.UtilityClass;
 
@@ -12,8 +13,9 @@ public class WalletMapper {
 
     public static Wallet toEntity(WalletDto dto) {
         return Wallet.builder()
+                .id(dto.getId())
                 .walletName(dto.getWalletName())
-                .walletDescription(dto.getWalletDescription())
+                .description(dto.getDescription())
                 .allocatedMoney(dto.getAllocatedMoney())
                 .currency(CurrencyMapper.toEntity(dto.getCurrency()))
                 .build();
@@ -21,9 +23,11 @@ public class WalletMapper {
 
     public static WalletDto toDto(Wallet entity) {
         return WalletDto.builder()
+                .id(entity.getId())
                 .walletName(entity.getWalletName())
-                .walletDescription(entity.getWalletDescription())
+                .description(entity.getDescription())
                 .allocatedMoney(entity.getAllocatedMoney())
+                .user(UserMapper.toDto(entity.getUser()))
                 .currency(CurrencyMapper.toDto(entity.getCurrency()))
                 .build();
     }

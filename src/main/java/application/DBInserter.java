@@ -78,12 +78,12 @@ public class DBInserter {
 
     private static void initWallets() {
         wallet1.setWalletName("Wallet1");
-        wallet1.setWalletDescription("Description1");
+        wallet1.setDescription("Description1");
         wallet1.setAllocatedMoney(20000.00);
         wallet1.setCurrency(currency1);
 
         wallet2.setWalletName("Wallet2");
-        wallet2.setWalletDescription("Description2");
+        wallet2.setDescription("Description2");
         wallet2.setAllocatedMoney(20000.00);
         wallet2.setCurrency(currency2);
     }

@@ -14,7 +14,7 @@ a {
     align-items: center;
 }
 
-.portfolio {
+.portfolio, .wallet, form {
     padding: .5rem;
     margin: 1rem 0;
     background: #fff;
@@ -22,10 +22,14 @@ a {
     line-height: 1.3em;
     border-radius: 10px;
     box-shadow: 0 0 0 4px #fff, 2px 2px 6px 3px rgba(10, 10, 0, 0.5);
-    font-weight: normal;
+    font-weight: 500;
 }
 
 .portfolio > .row {
+    padding: 5px;
+}
+
+.wallet > .row {
     padding: 5px;
 }
 
@@ -47,4 +51,25 @@ a {
 
 .btn-link {
     margin-right: 50px;
+}
+
+.open-dialog {
+    border-radius: 3px;
+    margin: 10px
+}
+
+.confirmation-dialog {
+    display: none;
+}
+
+.help-block {
+    color: red;
+}
+
+.login {
+    margin-left: 350px;
+}
+
+.allocated-money {
+    margin-left: 52px;
 }

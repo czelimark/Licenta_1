@@ -10,25 +10,10 @@
                             <input type="text" name="username" id="username" class="form-control" ng-model="vm.user.username" required />
                             <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
                         </div>
-                        <div class="form-group col-sm" ng-class="{ 'has-error': form.birthDate.$dirty && form.birthDate.$error.required }">
-                            <label for="birthDate"><b>Date of Birth</b></label>
-                            <input type="date" name="birthDate" id="birthDate" class="form-control" ng-model="vm.user.birthDate" required />
-                            <span ng-show="form.birthDate.$dirty && form.birthDate.$error.required" class="help-block">Date Of Birth is required</span>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="form-group col-sm" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
                             <label for="password"><b>Password</b></label>
                             <input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" required />
                             <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
-                        </div>
-                        <div class="form-group col-sm" ng-class="{ 'has-error': form.gender.$dirty && form.gender.$error.required }">
-                            <label for="gender"><b>Gender</b></label>
-                            <select name="gender" id="gender" class="form-control" ng-model="vm.user.gender"
-                                    ng-options="option.value as option.name for option in options"
-                                    ng-change="name=(options|filter:{value:vm.user.gender})[0].name" required>
-                            </select>
-                            <span ng-show="form.gender.$dirty && form.gender.$error.required" class="help-block">Gender is required</span>
                         </div>
                     </div>
                     <div class="row">
@@ -37,17 +22,32 @@
                             <input type="text" name="firstName" id="firstName" class="form-control" ng-model="vm.user.firstName" required />
                             <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</span>
                         </div>
-                        <div class="form-group col-sm" ng-class="{ 'has-error': form.phoneNumber.$dirty && form.phoneNumber.$error.required }">
-                            <label for="phoneNumber"><b>Phone Number</b></label>
-                            <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" ng-model="vm.user.phoneNumber" required />
-                            <span ng-show="form.phoneNumber.$dirty && form.phoneNumber.$error.required" class="help-block">Phone Number is required</span>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="form-group col-sm" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
                             <label for="lastName"><b>Last name</b></label>
                             <input type="text" name="lastName" id="lastName" class="form-control" ng-model="vm.user.lastName" required />
                             <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last name is required</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm" ng-class="{ 'has-error': form.gender.$dirty && form.gender.$error.required }">
+                            <label for="gender"><b>Gender</b></label>
+                            <select name="gender" id="gender" class="form-control" ng-model="vm.user.gender"
+                                    ng-options="option.value as option.name for option in options"
+                                    ng-change="name=(options|filter:{value:vm.user.gender})[0].name" required>
+                            </select>
+                            <span ng-show="form.gender.$dirty && form.gender.$error.required" class="help-block">Gender is required</span>
+                        </div>
+                        <div class="form-group col-sm" ng-class="{ 'has-error': form.birthDate.$dirty && form.birthDate.$error.required }">
+                            <label for="birthDate"><b>Date of Birth</b></label>
+                            <input type="date" name="birthDate" id="birthDate" class="form-control" ng-model="vm.user.birthDate" required />
+                            <span ng-show="form.birthDate.$dirty && form.birthDate.$error.required" class="help-block">Date Of Birth is required</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm" ng-class="{ 'has-error': form.phoneNumber.$dirty && form.phoneNumber.$error.required }">
+                            <label for="phoneNumber"><b>Phone Number</b></label>
+                            <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" ng-model="vm.user.phoneNumber" required />
+                            <span ng-show="form.phoneNumber.$dirty && form.phoneNumber.$error.required" class="help-block">Phone Number is required</span>
                         </div>
                         <div class="form-actions col-sm">
                             <div class="row buttons">

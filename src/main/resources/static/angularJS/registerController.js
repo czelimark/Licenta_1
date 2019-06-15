@@ -18,9 +18,8 @@
 
         function register() {
             vm.dataLoading = true;
-            UserService.Create(vm.user)
-                .then(function (response, status) {
-                    if (status == 200) {
+            UserService.Create(vm.user, function(response) {
+                    if (response.status == 200) {
                         FlashService.Success('Registration successful', true);
                         $location.path('/login');
                     } else {
@@ -29,10 +28,6 @@
                     }
                 });
         }
-
-        /*function update(value) {
-            vm.user.gender = value;
-        }*/
     }
 
 })();

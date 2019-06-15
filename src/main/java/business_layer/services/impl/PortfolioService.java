@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.PersistenceException;
 import java.util.List;
 
 @Service
@@ -31,22 +32,23 @@ public class PortfolioService implements IPortfolioService {
     }
 
     @Override
-    public PortfolioDto getPortfolio(String portfolioName) {
-        Portfolio portfolio = portfolioRepository.findByName(portfolioName).orElseThrow(ResourceNotFoundException::new);
+    public PortfolioDto getPortfolio(Integer id) {
+        Portfolio portfolio = portfolioRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
         return PortfolioMapper.toDto(portfolio);
     }
 
     @Override
     public void updatePortfolio(PortfolioDto portfolioDto) {
         Portfolio portfolio = portfolioRepository.findById(portfolioDto.getId()).orElseThrow(ResourceNotFoundException::new);
+        portfolio.setPortfolioName(portfolioDto.getPortfolioName());
         portfolio.setDescription(portfolioDto.getDescription());
         portfolio.setIssueDate(portfolioDto.getIssueDate());
         portfolioRepository.flush();
     }
 
     @Override
-    public void deletePortfolio(PortfolioDto portfolioDto) {
-        portfolioRepository.deletePortfolioById(PortfolioMapper.toEntity(portfolioDto).getId());
+    public void deletePortfolio(Integer id) {
+        portfolioRepository.deletePortfolioById(id);
         portfolioRepository.flush();
     }
 

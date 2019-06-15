@@ -14,7 +14,6 @@ public class PortfolioMapper {
                 .portfolioName(dto.getPortfolioName())
                 .description(dto.getDescription())
                 .issueDate(dto.getIssueDate())
-                .user(UserMapper.toEntity(dto.getUser()))
                 .build();
     }
 

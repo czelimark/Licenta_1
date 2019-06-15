@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface IPortfolioService {
 
-    PortfolioDto getPortfolio(String portfolioName);
+    PortfolioDto getPortfolio(Integer id);
 
     List<PortfolioDto> getPortfolios(String email);
 
     void updatePortfolio(PortfolioDto portfolioDto);
 
-    void deletePortfolio(PortfolioDto portfolioDto);
+    void deletePortfolio(Integer id);
 
     void addPortfolio(String email, PortfolioDto portfolioDto);
 }

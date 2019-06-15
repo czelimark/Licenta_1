@@ -12,6 +12,7 @@ public class ProjectMapper {
 
     public static Project toEntity(ProjectDto dto) {
         return Project.builder()
+                .id(dto.getId())
                 .projectName(dto.getProjectName())
                 .description(dto.getDescription())
                 .issueDate(dto.getIssueDate())
@@ -28,6 +29,7 @@ public class ProjectMapper {
 
     public static ProjectDto toDto(Project entity) {
         return ProjectDto.builder()
+                .id(entity.getId())
                 .projectName(entity.getProjectName())
                 .description(entity.getDescription())
                 .issueDate(entity.getIssueDate())

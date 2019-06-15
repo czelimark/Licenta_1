@@ -15,7 +15,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Portfolio {
+public class Portfolio implements Comparable<Portfolio> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,4 +35,9 @@ public class Portfolio {
     @ManyToOne
     @JoinColumn(name="idUser", nullable=false)
     private User user;
+
+    @Override
+    public int compareTo(Portfolio p) {
+        return this.id.compareTo(p.id);
+    }
 }

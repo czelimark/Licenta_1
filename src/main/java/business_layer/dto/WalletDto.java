@@ -11,9 +11,11 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class WalletDto implements Serializable {
+public class WalletDto implements Comparable<WalletDto>, Serializable {
 
     public static final long serialVersionUID = 82L;
+
+    private Integer id;
 
     @NotNull
     @Size(min = 1, max = 50)
@@ -21,13 +23,20 @@ public class WalletDto implements Serializable {
 
     @NotNull
     @Size(max = 100)
-    private String walletDescription;
+    private String description;
 
     @NotNull
     @Size(min = 1)
     private Double allocatedMoney;
 
+    @NotNull
     private UserDto user;
 
+    @NotNull
     private CurrencyDto currency;
+
+    @Override
+    public int compareTo(WalletDto w) {
+        return this.id.compareTo(w.id);
+    }
 }

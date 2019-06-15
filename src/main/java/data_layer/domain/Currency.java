@@ -14,7 +14,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Currency {
+public class Currency implements Comparable<Currency> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +23,9 @@ public class Currency {
     @NotNull
     @Size(max = 3)
     private String currencyName;
+
+    @Override
+    public int compareTo(Currency c) {
+        return this.id.compareTo(c.id);
+    }
 }

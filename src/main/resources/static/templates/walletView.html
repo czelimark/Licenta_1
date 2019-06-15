@@ -1,0 +1,80 @@
+<nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#!/profile"><span class="fa fa-home"></span>Profile</a>
+    <div class="collapse navbar-collapse justify-content-between" id="navbar">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="#!/portfolios">Portfolios</a>
+            <a class="nav-item active nav-link" href="#!/wallets">Wallets<span class="sr-only">(current)</span></a>
+        </div>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="#!/login">Logout</a></p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid content">
+    <div class="row">
+        <div class="col-xs-12 col-lg-4">
+            <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+            <h2>Add a wallet</h2>
+            <form name="form" class="form" role="form" ng-submit='vm.addWallet()'>
+                <div class="form-group" ng-class="{ 'has-error': form.id.$dirty && form.id.$error.required }">
+                    <label for="id"><b>ID</b></label>
+                    <input type="text" name="id" id="id" class="form-control" ng-model="vm.wallet.id" ng-readonly="true">
+                    <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">ID is required</span>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.walletName.$dirty && form.walletName.$error.required }">
+                    <label for="walletName"><b>Name</b></label>
+                    <input type="text" name="walletName" id="walletName" class="form-control" ng-model="vm.wallet.walletName" required>
+                    <span ng-show="form.walletName.$dirty && form.walletName.$error.required" class="help-block">Name is required</span>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.description.$dirty && form.description.$error.required }">
+                    <label for="description"><b>Description</b></label>
+                    <input type="text" name="description" id="description" class="form-control" ng-model="vm.wallet.description" required>
+                    <span ng-show="form.description.$dirty && form.description.$error.required" class="help-block">Description is required</span>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.allocatedMoney.$dirty && form.allocatedMoney.$error.required }">
+                    <label for="allocatedMoney"><b>Allocated Money</b></label>
+                    <input type="number" step="0.01" name="allocatedMoney" id="allocatedMoney" class="form-control" ng-model="vm.wallet.allocatedMoney" required>
+                    <span ng-show="form.allocatedMoney.$dirty && form.allocatedMoney.$error.required" class="help-block">Allocated Money is required</span>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.currency.$dirty && form.currency.$error.required }">
+                    <label for="currency"><b>Currency</b></label>
+                    <select ng-options="currency as currency.currencyName for currency in vm.currencies" name="currency" id="currency" class="form-control" ng-model="vm.wallet.currency" required></select>
+                    <span ng-show="form.currency.$dirty && form.currency.$error.required" class="help-block">Currency is required</span>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Submit</button>
+                    <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" ng-click="vm.updateWallet()" class="btn btn-primary">Update</button>
+                    <button type="submit" ng-click="vm.clearFields()" class="btn btn-primary">Clear</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-xs-12 col-lg-6">
+            <h2 class="wallet-section-header">Wallets</h2>
+            <div class='wallets'>
+                <div class='wallet' ng-repeat="wallet in vm.wallets">
+                    <div class="row wallet-heading">
+                        <div class="col-md-4">Wallet# {{wallet.id }}</div>
+                        <div class="col-md-8"><span class="wallet-name">Name: {{ wallet.walletName }}</span></div>
+                    </div> <!-- /row -heading- -->
+                    <div class="row wallet-body">
+                        <div class="col-md-4">ID: {{ wallet.id }}</div>
+                        <div class="col-md-8">Description: {{ wallet.description }}</div>
+                    </div> <!-- /row -body- -->
+                    <div class="row wallet-footer">
+                        <div class="col-md-1"><br /><span class="wallet-delete fa fa-trash-o" ng-click="vm.deleteWallet(wallet)"></span></div>
+                        <div class="col-md-2"><br /><span class="wallet-resolve fa fa-check" ng-click="vm.populateForm(wallet)"></span></div>
+                        <div class="col allocated-money"><br />
+                            Allocated Money: {{ wallet.allocatedMoney }} {{wallet.currency.currencyName}}
+                        </div> <!-- /row -footer- -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /row -->
+    <pagination num-pages="noOfPages" current-page="currentPage" class="pagination-small"></pagination>
+</div>

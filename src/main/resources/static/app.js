@@ -7,11 +7,17 @@
         .run(run);
 
     config.$inject = ['$routeProvider', '$locationProvider'];
-    function config($routeProvider, $locationProvider) {
+    function config($routeProvider) {
         $routeProvider
             .when('/portfolios', {
                 controller: 'PortfolioController',
                 templateUrl: 'templates/portfolioView.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/wallets', {
+                controller: 'WalletController',
+                templateUrl: 'templates/walletView.html',
                 controllerAs: 'vm'
             })
 
@@ -24,6 +30,12 @@
             .when('/register', {
                 controller: 'RegisterController',
                 templateUrl: 'templates/registerView.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/profile', {
+                controller: 'ProfileController',
+                templateUrl: 'templates/profileView.html',
                 controllerAs: 'vm'
             })
 

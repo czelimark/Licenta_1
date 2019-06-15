@@ -12,12 +12,14 @@ public class CurrencyMapper {
 
     public static Currency toEntity(CurrencyDto dto) {
         return Currency.builder()
+                .id(dto.getId())
                 .currencyName(dto.getCurrencyName())
                 .build();
     }
 
     public static CurrencyDto toDto(Currency entity) {
         return CurrencyDto.builder()
+                .id(entity.getId())
                 .currencyName(entity.getCurrencyName())
                 .build();
     }
