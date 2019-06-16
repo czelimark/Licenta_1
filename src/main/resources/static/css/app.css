@@ -8,8 +8,6 @@ a {
 }
 
 .vertical-center {
-    min-height: 100%;
-    min-height: 100vh;
     display: flex;
     align-items: center;
 }
@@ -72,4 +70,22 @@ a {
 
 .allocated-money {
     margin-left: 52px;
+}
+
+.btn-lg {
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.inputFile {
+    position: absolute;
+    font-size: 50px;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+
+.avatar {
+    border-radius: 50%;
 }

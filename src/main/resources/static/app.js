@@ -34,8 +34,8 @@
             })
 
             .when('/profile', {
-                controller: 'ProfileController',
-                templateUrl: 'templates/profileView.html',
+                controller: 'HomeController',
+                templateUrl: 'templates/homeView.html',
                 controllerAs: 'vm'
             })
 

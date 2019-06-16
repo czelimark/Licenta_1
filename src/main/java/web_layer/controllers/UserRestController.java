@@ -32,7 +32,7 @@ public class UserRestController {
     @PutMapping("/password")
     public ResponseEntity<?> putPassword(@RequestParam String password, @RequestParam String newPassword, Principal userr) {
         userService.updatePassword(userr.getName(), password, newPassword);
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @PutMapping("/register")
