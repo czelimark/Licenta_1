@@ -47,4 +47,11 @@ public class UserService implements IUserService {
         userRepo.save(userr);
         userRepo.flush();
     }
+
+    @Override
+    public void updateUser(String profilePhoto, String username) {
+        User user = userRepo.findByUsername(username).orElseThrow(ResourceNotFoundException::new);
+        user.setProfilePhoto(profilePhoto);
+        userRepo.flush();
+    }
 }

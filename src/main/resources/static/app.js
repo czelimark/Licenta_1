@@ -39,6 +39,26 @@
                 controllerAs: 'vm'
             })
 
+            .when('/projects', {
+                controller: 'ProjectController',
+                templateUrl: 'templates/projectView.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/projectsDetails', {
+                controller: 'ProjectsDetailsController',
+                templateUrl: 'templates/projectsDetailsView.html',
+                controllerAs: 'vm'
+
+            })
+
+            .when('/resources', {
+                controller: 'ResourcesController',
+                templateUrl: 'templates/resourceView.html',
+                controllerAs: 'vm'
+
+            })
+
             .otherwise({ redirectTo: '/login' });
     }
 

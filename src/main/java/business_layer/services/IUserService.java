@@ -15,4 +15,6 @@ public interface IUserService {
     void updatePassword(String username, String password, String newPassword);
 
     void addUser(UserDto userDto);
+
+    void updateUser(String profilePhoto, String username);
 }

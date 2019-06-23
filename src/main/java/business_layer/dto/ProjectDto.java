@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProjectDto implements Serializable {
+public class ProjectDto implements Comparable<ProjectDto>, Serializable {
 
     public static final long serialVersionUID = 80L;
 
@@ -36,13 +36,10 @@ public class ProjectDto implements Serializable {
     @NotNull
     private Double estimatedPrice;
 
-    @NotNull
     private Double actualPrice;
 
-    @NotNull
     private Double difference;
 
-    @NotNull
     @Size(max = 100)
     private String comments;
 
@@ -50,5 +47,8 @@ public class ProjectDto implements Serializable {
 
     private WalletDto wallet;
 
-    private List<CostDto> costs;
+    @Override
+    public int compareTo(ProjectDto p) {
+        return this.id.compareTo(p.id);
+    }
 }

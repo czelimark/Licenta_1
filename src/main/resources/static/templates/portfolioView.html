@@ -7,6 +7,7 @@
         <div class="navbar-nav">
             <a class="nav-item active nav-link" href="#!/portfolios">Portfolios<span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="#!/wallets">Wallets</a>
+            <a class="nav-item nav-link disabled" href="#!/projects">Projects</a>
         </div>
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="#!/login">Logout</a></p>
@@ -63,8 +64,8 @@
                     <div class="row portfolio-footer">
                         <div class="col-md-1"><br /><span class="portfolio-delete fa fa-trash-o" ng-click="vm.deletePortfolio(portfolio)"></span></div>
                         <div class="col-md-1"><br /><span class="portfolio-resolve fa fa-check" ng-click="vm.populateForm(portfolio)"></span></div>
-                        <div class="col-md-2"><br /><span class="portfolio-archive fa fa-archive" ng-click="portfolioProjects()"></span></div>
-                        <div class="col issue-date"><br />
+                        <div class="col-md-2"><br /><span class="portfolio-archive fa fa-archive" ng-click="vm.portfolioProjects(portfolio)"></span></div>
+                        <div class="col portfolio-issue-date"><br />
                             Issue Date: {{ portfolio.issueDate }}
                         </div> <!-- /row -footer- -->
                     </div>

@@ -75,8 +75,8 @@
         }
 
         function deleteWallet(wallet) {
-            let deleteUser = $window.confirm('Are you sure you want to delete the wallet?');
-            if(deleteUser) {
+            let deleteWallet = $window.confirm('Are you sure you want to delete the wallet?');
+            if(deleteWallet) {
                 vm.dataLoading = true;
                 WalletService.Delete(wallet.id, function (response) {
                     if (response.status == 200) {

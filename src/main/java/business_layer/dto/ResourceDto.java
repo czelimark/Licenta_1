@@ -12,9 +12,11 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResourceDto implements Serializable {
+public class ResourceDto implements Comparable<ResourceDto>, Serializable {
 
     public static final long serialVersionUID = 87L;
+
+    private Integer id;
 
     @NotNull
     @Size(min = 1, max = 100)
@@ -23,4 +25,9 @@ public class ResourceDto implements Serializable {
     @NotNull
     @Size(max = 100)
     private String resourceUsage;
+
+    @Override
+    public int compareTo(ResourceDto r) {
+        return this.id.compareTo(r.id);
+    }
 }

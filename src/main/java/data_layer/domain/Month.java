@@ -14,7 +14,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Month {
+public class Month implements Comparable<Month> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +23,11 @@ public class Month {
     @NotNull
     @Size(min = 3, max = 10)
     private String monthName;
+
+    private Integer nrOfProjects;
+
+    @Override
+    public int compareTo(Month m) {
+        return this.id.compareTo(m.id);
+    }
 }

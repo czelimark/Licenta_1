@@ -3,6 +3,7 @@ package web_layer.controllers;
 import business_layer.dto.ProjectDto;
 import business_layer.services.IProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,31 +21,31 @@ public class ProjectRestController {
     }
 
     @PutMapping("/addProject")
-    public ResponseEntity<?> putProject(@RequestBody Integer id, @RequestBody ProjectDto projectDto) {
-        projectService.addProject(id, projectDto);
-        return ResponseEntity.ok(null);
+    public ResponseEntity<?> putProject(@RequestBody ProjectDto projectDto) {
+        projectService.addProject(projectDto);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @DeleteMapping("/deleteProject")
-    public ResponseEntity<?> deleteProject(@RequestBody ProjectDto projectDto) {
-        projectService.deleteProject(projectDto);
-        return ResponseEntity.ok(null);
+    @DeleteMapping("/deleteProject/{id}")
+    public ResponseEntity<?> deleteProject(@PathVariable String id) {
+        projectService.deleteProject(Integer.valueOf(id));
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @PutMapping("/updateProject")
     public ResponseEntity<?> updateProject(@RequestBody ProjectDto projectDto) {
         projectService.updateProject(projectDto);
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @GetMapping("/{projectName}")
+    @GetMapping("/project/{id}")
     public ProjectDto getProject(@PathVariable Integer id) {
         return projectService.getProject(id);
     }
 
-    @GetMapping("/projects")
-    public ResponseEntity<?> getProjects(Integer id) {
-        List<ProjectDto> projects = projectService.getProjects(id);
+    @GetMapping("/projects/{id}")
+    public ResponseEntity<?> getProjects(@PathVariable String id) {
+        List<ProjectDto> projects = projectService.getProjects(Integer.valueOf(id));
         return ResponseEntity.ok(projects);
     }
 }

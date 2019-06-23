@@ -15,7 +15,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Project {
+public class Project implements Comparable<Project> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,13 +38,10 @@ public class Project {
     @NotNull
     private Double estimatedPrice;
 
-    @NotNull
     private Double actualPrice;
 
-    @NotNull
     private Double difference;
 
-    @NotNull
     @Size(max = 100)
     private String comments;
 
@@ -53,8 +50,11 @@ public class Project {
     private Portfolio portfolio;
 
     @ManyToOne
+    @JoinColumn(name="idWallet", nullable=false)
     private Wallet wallet;
 
-    @OneToMany(mappedBy = "project")
-    private List<Cost> costs;
+    @Override
+    public int compareTo(Project p) {
+        return this.id.compareTo(p.id);
+    }
 }

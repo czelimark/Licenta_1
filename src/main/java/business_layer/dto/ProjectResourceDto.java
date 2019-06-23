@@ -11,9 +11,11 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProjectCostDto implements Serializable {
+public class ProjectResourceDto implements Comparable<ProjectResourceDto>, Serializable {
 
     public static final long serialVersionUID = 88L;
+
+    private Integer id;
 
     private ProjectDto project;
 
@@ -22,4 +24,9 @@ public class ProjectCostDto implements Serializable {
     @NotNull
     @Size(min = 1)
     private Double resourceCost;
+
+    @Override
+    public int compareTo(ProjectResourceDto p) {
+        return this.id.compareTo(p.id);
+    }
 }

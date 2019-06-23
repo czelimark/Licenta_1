@@ -11,11 +11,20 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MonthDto implements Serializable {
+public class MonthDto implements Comparable<MonthDto>, Serializable {
 
     public static final long serialVersionUID = 84L;
+
+    private Integer id;
 
     @NotNull
     @Size(min = 10, max = 10)
     private String monthName;
+
+    private Integer nrOfProjects;
+
+    @Override
+    public int compareTo(MonthDto m) {
+        return this.id.compareTo(m.id);
+    }
 }

@@ -11,8 +11,6 @@ d
 4src/main/java/Business_Layer/Mappers/CostMapper.java,0\9\091b260075d2b4c1ab3b24b373d5f968b936818e
 a
 1src/main/java/Business_Layer/Dto/ResourceDto.java,1\1\111e80d26be805732f538a29d3c4b0c2e0278483
-k
-;src/main/java/Business_Layer/Mappers/ProjectCostMapper.java,8\9\8959cfde68aa995cc67d00a8ddbe0f438afebcce
 h
 8src/main/java/Business_Layer/Mappers/ResourceMapper.java,9\c\9cc134f37a497c1d0c855e13d2fb3f72c911d11f
 [
@@ -21,8 +19,6 @@ Y
 )src/main/java/Data_Layer/Domain/User.java,a\3\a3381ff027e7183cc6968f2b9d5a7adb2043eeb1
 \
 ,src/main/java/Data_Layer/Domain/Project.java,2\f\2fb890894e6be9f9e407bd4a8f1b0ad8aa9038bf
-`
-0src/main/java/Data_Layer/Domain/ProjectCost.java,4\c\4c30c28340512b1ae59f3bc97be0c9a7ef37107c
 Z
 *src/main/java/Data_Layer/Domain/Month.java,7\4\749139efd67904630672bd716d052077061adbcd
 ]
@@ -39,8 +35,6 @@ a
 1src/main/java/Business_Layer/Dto/CurrencyDto.java,3\1\31745f5a0e551af0b7f9e6137a08f4117c7ac719
 ^
 .src/main/java/Business_Layer/Dto/MonthDto.java,4\f\4f9673608c55fa7495b1b43b487c81ef5b5b5768
-d
-4src/main/java/Business_Layer/Dto/ProjectCostDto.java,4\5\455396da43a5015ec1b852f4d790c6c06c9b71a4
 `
 0src/main/java/Business_Layer/Dto/ProjectDto.java,6\4\647bb8b52c8785175f46b17a732deb4bc48f285c
 _
@@ -69,8 +63,6 @@ R
 "src/main/java/Utils/Constants.java,d\1\d1a9f5436f450b7a35aee0713313d46a8f04eca2
 k
 ;src/main/java/Web_Layer/Controllers/UserRestController.java,9\5\95ebbcb9be1b4312941b68133b7e4555f1029e6e
-j
-:src/main/java/Web_Layer/Controllers/UserMvcController.java,7\b\7b9a56380d6e49677023a5e02fade46b34167b9a
 A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
 <
@@ -109,8 +101,6 @@ u
 Esrc/main/java/business_layer/services/impl/AuthenticationService.java,4\a\4a101808557cb68b858b5b14893785d613243919
 _
 /src/main/java/web_layer/utils/WebMvcConfig.java,2\e\2ef1620d8b731354473383d763960876f96bbc27
-j
-:src/main/java/web_layer/controllers/UserMvcController.java,e\d\edde47014667e8f3ef4c6889ba17e633c8e31a0d
 d
 4src/main/java/web_layer/utils/WebSecurityConfig.java,9\2\920d06ac3e76c6e51aff9ee7a737785dbe5f540f
 e
@@ -263,8 +253,6 @@ Y
 -src/main/java/business_layer/dto/CostDto.java,f\f\ff5af381d51c46ee9ea053d816110f830e3fb70f
 ^
 .src/main/java/business_layer/dto/MonthDto.java,c\3\c3591f8f49e4e740f2b40c34f6525193e21ea173
-d
-4src/main/java/business_layer/dto/ProjectCostDto.java,d\3\d327c6a12f86fa12e68151a0b8d7b1f285dc60fe
 a
 1src/main/java/business_layer/dto/ResourceDto.java,5\b\5b381b69908649c84692586e8e35ca5940e45da7
 ]
@@ -273,8 +261,6 @@ _
 /src/main/java/business_layer/dto/WalletDto.java,f\c\fce84d1660e4ae7954580aa2dd2867bcd7826253
 e
 5src/main/java/business_layer/mappers/MonthMapper.java,8\b\8bf27dd2901a168ed4b0d0ae2eea466401b83d4a
-k
-;src/main/java/business_layer/mappers/ProjectCostMapper.java,4\8\484f0b5d131a9572febc23f1e68c44c8b5b4feaa
 h
 8src/main/java/business_layer/mappers/ResourceMapper.java,2\0\203d5c6bbce8e0f662159e780ccc72c17919c4fb
 ^
@@ -295,8 +281,6 @@ a
 1src/main/java/business_layer/dto/CurrencyDto.java,8\9\893316ebf72cee339008e59299045437dffda025
 Y
 )src/main/java/application/DBInserter.java,c\e\ce325a4a46374198820d098fca1e9e83100c066a
-`
-0src/main/java/data_layer/domain/ProjectCost.java,d\6\d64adedaff36015e6f91b56f25f3b0951873b8a2
 a
 1src/main/java/data_layer/domain/ProjectMonth.java,f\8\f8a775fdd2531c1f8a33a37ea736efb3b5f90b58
 Z
@@ -341,3 +325,13 @@ m
 =src/main/java/business_layer/services/impl/WalletService.java,7\d\7df34db773d749d21d5c068fe30ed239f1285130
 n
 >src/main/java/business_layer/services/impl/ProjectService.java,7\e\7e8532ccbee63a1eb3640160b9c5289f68a8168b
+b
+2src/main/resources/static/angularJS/homeService.js,a\d\ad794ca9e20788e704d09b1031457f53f99f81df
+a
+1src/main/resources/static/templates/homeView.html,e\c\ec87cbd658a9b1de2c1dc8c0fe55be7b441c96f5
+T
+$src/main/java/utils/EmailSender.java,c\3\c3a64efca98316b1e003cfdd2b7daf8043827524
+e
+5src/main/resources/static/angularJS/homeController.js,b\d\bdd962404118b5cc44c758b5b4a1300c1421636f
+d
+4src/main/java/data_layer/domain/ProjectResource.java,b\6\b6e337f4c26bde5c234958a15f2c093ca3324e92

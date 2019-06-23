@@ -18,12 +18,11 @@ public class ProjectMapper {
                 .issueDate(dto.getIssueDate())
                 .closingDate(dto.getClosingDate())
                 .estimatedPrice(dto.getEstimatedPrice())
-                .actualPrice(dto.getActualPrice())
-                .difference(dto.getDifference())
+                .actualPrice(0.00)
+                .difference(0.00)
                 .comments(dto.getComments())
                 .portfolio(PortfolioMapper.toEntity(dto.getPortfolio()))
                 .wallet(WalletMapper.toEntity(dto.getWallet()))
-                .costs(CostMapper.toEntityList(dto.getCosts()))
                 .build();
     }
 
@@ -40,7 +39,6 @@ public class ProjectMapper {
                 .comments(entity.getComments())
                 .portfolio(PortfolioMapper.toDto(entity.getPortfolio()))
                 .wallet(WalletMapper.toDto(entity.getWallet()))
-                .costs(CostMapper.toDtoList(entity.getCosts()))
                 .build();
     }
 

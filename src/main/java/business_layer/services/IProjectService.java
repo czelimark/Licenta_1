@@ -12,7 +12,7 @@ public interface IProjectService {
 
     void updateProject(ProjectDto projectDto);
 
-    void deleteProject(ProjectDto projectDto);
+    void deleteProject(Integer id);
 
-    void addProject(Integer id, ProjectDto projectDto);
+    void addProject(ProjectDto projectDto);
 }

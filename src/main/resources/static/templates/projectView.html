@@ -1,0 +1,106 @@
+<nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#!/profile"><span class="fa fa-home"></span>Profile</a>
+    <div class="collapse navbar-collapse justify-content-between" id="navbar">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="#!/portfolios">Portfolios<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#!/wallets">Wallets</a>
+            <a class="nav-item active nav-link" href="#!/projects">Projects</a>
+            <a class="nav-item nav-link" href="#!/projectsDetails">Projects Details</a>
+        </div>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="#!/login">Logout</a></p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid content">
+    <div class="row">
+        <div class="col-xs-12 col-lg-4">
+            <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+            <h2>Add a project</h2>
+            <form name="form" class="form" role="form" ng-submit='vm.addProject()'>
+                <div class="form-group" ng-class="{ 'has-error': form.id.$dirty && form.id.$error.required }">
+                    <label for="id"><b>ID</b></label>
+                    <input type="text" name="id" id="id" class="form-control" ng-model="vm.project.id" ng-readonly="true">
+                    <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">ID is required</span>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.projectName.$dirty && form.projectName.$error.required }">
+                    <label for="projectName"><b>Name</b></label>
+                    <input type="text" name="projectName" id="projectName" class="form-control" ng-model="vm.project.projectName" required>
+                    <span ng-show="form.projectName.$dirty && form.projectName.$error.required" class="help-block">Name is required</span>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.description.$dirty && form.description.$error.required }">
+                    <label for="description"><b>Description</b></label>
+                    <input type="text" name="description" id="description" class="form-control" ng-model="vm.project.description" required>
+                    <span ng-show="form.description.$dirty && form.description.$error.required" class="help-block">Description is required</span>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.issueDate.$dirty && form.issueDate.$error.required }">
+                    <label for="issueDate"><b>Issue Date</b></label>
+                    <input type="date" name="issueDate" id="issueDate" class="form-control" ng-model="vm.project.issueDate" required>
+                    <span ng-show="form.issueDate.$dirty && form.issueDate.$error.required" class="help-block">Issue date is required</span>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.closingDate.$dirty && form.closingDate.$error.required }">
+                    <label for="closingDate"><b>Closing Date</b></label>
+                    <input type="date" name="closingDate" id="closingDate" class="form-control" ng-model="vm.project.closingDate" required>
+                    <span ng-show="form.closingDate.$dirty && form.closingDate.$error.required" class="help-block">Closing Date is required</span>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.estimatedPrice.$dirty && form.estimatedPrice.$error.required }">
+                    <label for="estimatedPrice"><b>Estimated Price</b></label>
+                    <input type="number" ng-step="0.01" name="estimatedPrice" id="estimatedPrice" class="form-control" ng-model="vm.project.estimatedPrice" required>
+                    <span ng-show="form.estimatedPrice.$dirty && form.estimatedPrice.$error.required" class="help-block">Estimated price is required</span>
+                </div>
+                <div class="form-group">
+                    <label for="portfolio"><b>Portfolio</b></label>
+                    <input type="text" name="portfolio" id="portfolio" class="form-control" ng-model="vm.project.portfolio.id" ng-readonly="true">
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.wallet.$dirty && form.wallet.$error.required }">
+                    <label for="wallet"><b>Wallet</b></label>
+                    <select ng-options="wallet as wallet.walletName for wallet in vm.wallets" name="wallet" id="wallet" class="form-control" ng-model="vm.project.wallet" required></select>
+                    <span ng-show="form.wallet.$dirty && form.wallet.$error.required" class="help-block">Wallet is required</span>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.comments.$dirty}">
+                    <label for="comments"><b>Comments</b></label>
+                    <input type="text" name="comments" id="comments" class="form-control" ng-model="vm.project.comments">
+                    <span ng-show="form.comments.$dirty" class="help-block"></span>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Submit</button>
+                    <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" ng-click="vm.updateProject()" class="btn btn-primary">Update</button>
+                    <button type="submit" ng-click="vm.clearFields()" class="btn btn-primary">Clear</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-xs-12 col-lg-8">
+            <h2 class="project-section-header">Projects</h2>
+            <div class='projects'>
+                <div class='project' ng-repeat="project in vm.projects">
+                    <div class="row project-heading">
+                        <div class="col-md-4">Project# {{ project.id }}</div>
+                        <div class="col-md-4"><span class="project-name">Name: {{ project.projectName }}</span></div>
+                        <div class="col-md-4"><span class="project-estimated-price">Estimated price: {{project.estimatedPrice}} {{project.wallet.currency.currencyName}}</span></div>
+                    </div> <!-- /row -heading- -->
+                    <div class="row project-body">
+                        <div class="col-md-4">ID: {{ project.id }}</div>
+                        <div class="col-md-4">Description: {{ project.description }}</div>
+                        <div class="col-md-4">Wallet: {{ project.wallet.id }}</div>
+                    </div> <!-- /row -body- -->
+                    <div class="row project-footer">
+                        <div class="col-md-1"><br /><span class="project-delete fa fa-trash-o" ng-click="vm.deleteProject(project)"></span></div>
+                        <div class="col-md-1"><br /><span class="project-resolve fa fa-check" ng-click="vm.populateForm(project)"></span></div>
+                        <div class="col issue-date"><br />
+                            Issue Date: {{ project.issueDate }}
+                        </div> <!-- /row -footer- -->
+                        <div class="col closing-date"><br />
+                            Closing Date: {{ project.closingDate }}
+                        </div> <!-- /row -footer- -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /row -->
+    <pagination num-pages="noOfPages" current-page="currentPage" class="pagination-small"></pagination>
+</div>

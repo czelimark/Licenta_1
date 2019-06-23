@@ -36,12 +36,12 @@ public class PortfolioRestController {
     @PutMapping("/updatePortfolio")
     public ResponseEntity<?> updatePortfolio(@RequestBody PortfolioDto portfolioDto) {
         portfolioService.updatePortfolio(portfolioDto);
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @GetMapping("/{portfolioName}")
-    public PortfolioDto getPortfolio(@PathVariable Integer id) {
-        return portfolioService.getPortfolio(id);
+    @GetMapping("/portfolio/{id}")
+    public PortfolioDto getPortfolio(@PathVariable String id) {
+        return portfolioService.getPortfolio(Integer.valueOf(id));
     }
 
     @GetMapping("/portfolios")

@@ -12,6 +12,7 @@ public class CostMapper {
 
     public static Cost toEntity(CostDto dto) {
         return Cost.builder()
+                .id(dto.getId())
                 .costType(dto.getCostType())
                 .cost(dto.getCost())
                 .project(ProjectMapper.toEntity(dto.getProject()))
@@ -20,6 +21,7 @@ public class CostMapper {
 
     public static CostDto toDto(Cost entity) {
         return CostDto.builder()
+                .id(entity.getId())
                 .costType(entity.getCostType())
                 .cost(entity.getCost())
                 .project(ProjectMapper.toDto(entity.getProject()))

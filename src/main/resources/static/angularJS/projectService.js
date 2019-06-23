@@ -3,23 +3,24 @@
 
     angular
         .module('app')
-        .factory('HomeService', HomeService);
+        .factory('ProjectService', ProjectService);
 
-    HomeService.$inject = ['$http'];
-    function HomeService($http) {
+    ProjectService.$inject = ['$http'];
+    function ProjectService($http) {
         var service = {};
 
+        service.Create = Create;
+        service.Delete = Delete;
+        service.GetAllProjects = GetAllProjects;
         service.Update = Update;
-        service.GetUserByUsername = GetUserByUsername;
-        service.updateUserr = updateUserr;
 
         return service;
 
-        function Update(password, newPassword, username, callback) {
+        function Create(project, callback) {
             return $http({
                 method: 'PUT',
-                url: '/app/password' + '?' + "password=" + password + "&" + "newPassword=" + newPassword,
-                data: password, newPassword, username,
+                url: '/app/addProject',
+                data: project,
                 headers: {
                     "Content-Type": "application/json;charset=UTF-8"
                 }
@@ -29,32 +30,44 @@
                 });
         }
 
-        function GetUserByUsername(username, callback) {
+        function Delete(project, callback) {
+            return $http({
+                method: 'DELETE',
+                url: '/app/deleteProject/' + project,
+                data: project,
+                headers: {
+                    "Content-Type": "application/json;charset=UTF-8"
+                }
+            })
+                .then(function (response) {
+                    callback(response);
+                });
+        }
+
+        function Update(project, callback) {
+            return $http({
+                method: 'PUT',
+                url: '/app/updateProject',
+                data: project,
+                headers: {
+                    "Content-Type": "application/json;charset=UTF-8"
+                }
+            })
+                .then(function (response) {
+                    callback(response);
+                });
+        }
+
+        function GetAllProjects(portfolio) {
             return $http({
                 method: 'GET',
-                url: '/app/user',
-                data: username,
+                url: '/app/projects/' + portfolio,
+                data: portfolio,
                 headers: {
                     "Content-Type": "application/json;charset=UTF-8"
                 }
             })
-                .then(function (response) {
-                    callback(response)
-                });
-        }
-
-        function updateUserr(user, username, callback) {
-            return $http({
-                method: 'PUT',
-                url: '/app/update',
-                data: user, username,
-                headers: {
-                    "Content-Type": "application/json;charset=UTF-8"
-                }
-            })
-                .then(function (response) {
-                    callback(response);
-                });
+                .then(handleSuccess, handleError('Error getting projects'));
         }
 
         // private functions

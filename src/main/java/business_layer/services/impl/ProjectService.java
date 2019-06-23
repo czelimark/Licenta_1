@@ -53,16 +53,14 @@ public class ProjectService implements IProjectService {
     }
 
     @Override
-    public void deleteProject(ProjectDto projectDto) {
-        projectRepository.deleteProjectById(ProjectMapper.toEntity(projectDto).getId());
+    public void deleteProject(Integer id) {
+        projectRepository.deleteProjectById(id);
         projectRepository.flush();
     }
 
     @Override
-    public void addProject(Integer id, ProjectDto projectDto) {
+    public void addProject(ProjectDto projectDto) {
         Project project = ProjectMapper.toEntity(projectDto);
-        Portfolio portfolio = portfolioRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
-        project.setPortfolio(portfolio);
         projectRepository.save(project);
         projectRepository.flush();
     }

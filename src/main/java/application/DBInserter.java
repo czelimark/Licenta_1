@@ -5,7 +5,6 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Arrays;
 
 public class DBInserter {
 
@@ -17,7 +16,7 @@ public class DBInserter {
     private static Cost cost1, cost2;
     private static Currency currency1, currency2;
     private static Month january, february, march, april, may, june, july, august, september, october, november, december;
-    private static ProjectCost projectCost1, projectCost2;
+    private static ProjectResource projectResource1, projectResource2;
     private static ProjectMonth projectMonth1, projectMonth2, projectMonth3;
 
     static {
@@ -46,8 +45,8 @@ public class DBInserter {
         october = new Month();
         november = new Month();
         december = new Month();
-        projectCost1 = new ProjectCost();
-        projectCost2 = new ProjectCost();
+        projectResource1 = new ProjectResource();
+        projectResource2 = new ProjectResource();
         projectMonth1 = new ProjectMonth();
         projectMonth2 = new ProjectMonth();
         projectMonth3 = new ProjectMonth();
@@ -114,17 +113,16 @@ public class DBInserter {
         project1.setComments("Comment1");
         project1.setPortfolio(portfolio1);
         project1.setWallet(wallet1);
-        project1.setCosts(Arrays.asList(cost1, cost2));
     }
 
     private static void initProjectCosts() {
-        projectCost1.setProject(project1);
-        projectCost1.setResource(resource1);
-        projectCost1.setResourceCost(5000.00);
+        projectResource1.setProject(project1);
+        projectResource1.setResource(resource1);
+        projectResource1.setResourceCost(5000.00);
 
-        projectCost2.setProject(project2);
-        projectCost2.setResource(resource2);
-        projectCost2.setResourceCost(8000.00);
+        projectResource2.setProject(project2);
+        projectResource2.setResource(resource2);
+        projectResource2.setResourceCost(8000.00);
     }
 
     private static void initProjectMonths() {

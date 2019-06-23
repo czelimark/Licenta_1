@@ -40,4 +40,10 @@ public class UserRestController {
         userService.addUser(userDto);
         return ResponseEntity.ok(HttpStatus.OK);
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<?> put(@RequestBody String profilePhoto, Principal crtUser) {
+        userService.updateUser(profilePhoto, crtUser.getName());
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
 }

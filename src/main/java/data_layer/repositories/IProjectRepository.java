@@ -15,9 +15,6 @@ public interface IProjectRepository extends JpaRepository<Project, Integer> {
     @Query("SELECT p FROM Projects p WHERE p.portfolio.id = (?1)")
     List<Project> findByPortfolio(Integer id);
 
-    @Query("SELECT p FROM Projects p WHERE p.projectName = (?1)")
-    Optional<Project> findByName(String projectName);
-
     @Modifying
     @Query("DELETE FROM Projects p WHERE p.id = (?1)")
     void deleteProjectById(Integer id);

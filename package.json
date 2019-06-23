@@ -7,5 +7,9 @@
     "test": "test"
   },
   "author": "Mark",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@handsontable/angular": "^5.0.0",
+    "handsontable": "^7.1.0"
+  }
 }

@@ -10,6 +10,7 @@ public class UserMapper {
 
     public static User toEntity(UserDto dto) {
         return User.builder()
+                .id(dto.getId())
                 .username(dto.getUsername())
                 .password(BCrypt.hashpw(dto.getPassword(), BCrypt.gensalt(8)))
                 .firstName(dto.getFirstName())
@@ -23,6 +24,7 @@ public class UserMapper {
 
     public static UserDto toDto(User entity) {
         return UserDto.builder()
+                .id(entity.getId())
                 .username(entity.getUsername())
                 .firstName(entity.getFirstName())
                 .lastName(entity.getLastName())

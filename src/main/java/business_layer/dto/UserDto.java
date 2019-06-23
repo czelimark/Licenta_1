@@ -15,9 +15,11 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserDto implements Serializable {
+public class UserDto implements Comparable<UserDto>, Serializable {
 
     private static final long serialVersioUID = 8L;
+
+    private Integer id;
 
     @NotNull
     private String username;
@@ -49,7 +51,8 @@ public class UserDto implements Serializable {
     private String role;
 
     @Builder
-    public UserDto(String username, String password, String lastName, String firstName, Date birthDate, Boolean gender, String phoneNumber, String profilePhoto, List<PortfolioDto> portfolios, List<WalletDto> wallets, String role) {
+    public UserDto(Integer id, String username, String password, String lastName, String firstName, Date birthDate, Boolean gender, String phoneNumber, String profilePhoto, List<PortfolioDto> portfolios, List<WalletDto> wallets, String role) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.lastName = lastName;
@@ -59,5 +62,10 @@ public class UserDto implements Serializable {
         this.phoneNumber = phoneNumber;
         this.profilePhoto = profilePhoto;
         this.role = role;
+    }
+
+    @Override
+    public int compareTo(UserDto u) {
+        return this.id.compareTo(u.id);
     }
 }

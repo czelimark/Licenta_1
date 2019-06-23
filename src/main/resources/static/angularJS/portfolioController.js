@@ -5,8 +5,8 @@
         .module('app')
         .controller('PortfolioController', PortfolioController);
 
-    PortfolioController.$inject = ['PortfolioService', '$window', '$rootScope', 'FlashService'];
-    function PortfolioController(PortfolioService, $window, $rootScope, FlashService) {
+    PortfolioController.$inject = ['PortfolioService', '$location', '$window', '$rootScope', 'FlashService'];
+    function PortfolioController(PortfolioService, $location, $window, $rootScope, FlashService) {
         var vm = this;
 
         vm.portfolio = {};
@@ -18,6 +18,7 @@
         vm.populateForm = populateForm;
         vm.updatePortfolio = updatePortfolio;
         vm.clearFields = clearFields;
+        vm.portfolioProjects = portfolioProjects;
 
         /*return {
             get: function(offset, limit) {
@@ -65,8 +66,8 @@
         }
 
         function deletePortfolio(portfolio) {
-            let deleteUser = $window.confirm('Are you sure you want to delete the portfolio?');
-            if(deleteUser) {
+            let deletePortfolio = $window.confirm('Are you sure you want to delete the portfolio?');
+            if(deletePortfolio) {
                 vm.dataLoading = true;
                 PortfolioService.Delete(portfolio.id, function (response) {
                     if (response.status == 200) {
@@ -103,6 +104,11 @@
             vm.portfolio.portfolioName = '';
             vm.portfolio.description = '';
             vm.portfolio.issueDate = '';
+        }
+
+        function portfolioProjects(portfolio) {
+            $rootScope.$broadcast('portfolio', portfolio);
+            $location.path("/projects");
         }
     }
 

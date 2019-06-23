@@ -12,6 +12,7 @@ public class ResourceMapper {
 
     public static Resource toEntity(ResourceDto dto) {
         return Resource.builder()
+                .id(dto.getId())
                 .resourceName(dto.getResourceName())
                 .resourceUsage(dto.getResourceUsage())
                 .build();
@@ -19,6 +20,7 @@ public class ResourceMapper {
 
     public static ResourceDto toDto(Resource entity) {
         return ResourceDto.builder()
+                .id(entity.getId())
                 .resourceName(entity.getResourceName())
                 .resourceUsage(entity.getResourceUsage())
                 .build();

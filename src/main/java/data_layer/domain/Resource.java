@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Resource {
+public class Resource implements Comparable<Resource> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,4 +27,9 @@ public class Resource {
     @NotNull
     @Size(max = 100)
     private String resourceUsage;
+
+    @Override
+    public int compareTo(Resource r) {
+        return this.id.compareTo(r.id);
+    }
 }

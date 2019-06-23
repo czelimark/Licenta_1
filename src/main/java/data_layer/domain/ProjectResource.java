@@ -12,19 +12,26 @@ import javax.validation.constraints.Size;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProjectCost {
+public class ProjectResource implements Comparable<ProjectResource> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne(optional = false)
+    @JoinColumn(name = "idProject")
     private Project project;
 
     @ManyToOne(optional = false)
+    @JoinColumn(name = "idResource")
     private Resource resource;
 
     @NotNull
     @Size(min = 1)
     private Double resourceCost;
+
+    @Override
+    public int compareTo(ProjectResource p) {
+        return this.id.compareTo(p.id);
+    }
 }

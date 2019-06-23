@@ -3,23 +3,23 @@
 
     angular
         .module('app')
-        .factory('HomeService', HomeService);
+        .factory('ProjectDetailsService', ProjectDetailsService);
 
-    HomeService.$inject = ['$http'];
-    function HomeService($http) {
+    ProjectDetailsService.$inject = ['$http'];
+    function ProjectDetailsService($http) {
         var service = {};
 
+        service.Create = Create;
+        service.Delete = Delete;
         service.Update = Update;
-        service.GetUserByUsername = GetUserByUsername;
-        service.updateUserr = updateUserr;
 
         return service;
 
-        function Update(password, newPassword, username, callback) {
+        function Create(project, callback) {
             return $http({
                 method: 'PUT',
-                url: '/app/password' + '?' + "password=" + password + "&" + "newPassword=" + newPassword,
-                data: password, newPassword, username,
+                url: '/app/addProject',
+                data: project,
                 headers: {
                     "Content-Type": "application/json;charset=UTF-8"
                 }
@@ -29,25 +29,25 @@
                 });
         }
 
-        function GetUserByUsername(username, callback) {
+        function Delete(project, callback) {
             return $http({
-                method: 'GET',
-                url: '/app/user',
-                data: username,
+                method: 'DELETE',
+                url: '/app/deleteProject/' + project,
+                data: project,
                 headers: {
                     "Content-Type": "application/json;charset=UTF-8"
                 }
             })
                 .then(function (response) {
-                    callback(response)
+                    callback(response);
                 });
         }
 
-        function updateUserr(user, username, callback) {
+        function Update(project, callback) {
             return $http({
                 method: 'PUT',
-                url: '/app/update',
-                data: user, username,
+                url: '/app/updateProject',
+                data: project,
                 headers: {
                     "Content-Type": "application/json;charset=UTF-8"
                 }

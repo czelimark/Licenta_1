@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cost {
+public class Cost implements Comparable<Cost> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,5 +28,11 @@ public class Cost {
 
     @NotNull
     @ManyToOne
+    @JoinColumn(name="idProject", nullable=false)
     private Project project;
+
+    @Override
+    public int compareTo(Cost c) {
+        return this.id.compareTo(c.id);
+    }
 }

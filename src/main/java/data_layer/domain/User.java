@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
-public class User {
+public class User implements Comparable<User> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +41,6 @@ public class User {
     @NotNull
     private Boolean gender;
 
-    @NotNull
     @Size(min = 8, max = 15)
     private String phoneNumber;
 
@@ -49,7 +48,8 @@ public class User {
     private String profilePhoto;
 
     @Builder
-    public User(String username, String password, String lastName, String firstName, Date birthDate, Boolean gender, String phoneNumber, String profilePhoto) {
+    public User(Integer id, String username, String password, String lastName, String firstName, Date birthDate, Boolean gender, String phoneNumber, String profilePhoto) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.lastName = lastName;
@@ -62,5 +62,10 @@ public class User {
 
     public String getRole() {
         return this.getClass().getSimpleName().toUpperCase();
+    }
+
+    @Override
+    public int compareTo(User u) {
+        return this.id.compareTo(u.id);
     }
 }

@@ -1,0 +1,25 @@
+<link rel="stylesheet" type="text/css" href="https://handsontable.com/static/css/main.css">
+
+<nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbar">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="#!/projects">Project</a>
+            <a class="nav-item active nav-link" href="#!/projectDetails">Project Details<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#!/resources">Resources</a>
+            <a class="nav-item nav-link" href="#!/costs">Costs</a>
+        </div>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="#!/login">Logout</a></p>
+        </div>
+    </div>
+</nav>
+
+<div id="hot" class="d-flex align-items-center justify-content-center"></div>
+<div id="export-buttons" class="visible">
+    <button class="btn size-medium bg-blue text-white shadow hover-moveup" style="margin-right: 5px;">Update Project</button>
+    <button id="export-csv" class="btn size-medium bg-blue text-white shadow hover-moveup" style="margin-right: 5px;">Export to a .csv file</button>
+    <button id="export-string" class="btn size-medium bg-green text-white shadow hover-moveup">Export to string (see the browser console)</button>
+</div>

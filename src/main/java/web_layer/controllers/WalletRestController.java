@@ -31,13 +31,13 @@ public class WalletRestController {
     @DeleteMapping("/deleteWallet/{id}")
     public ResponseEntity<?> deletePortfolio(@PathVariable Integer id) {
         walletService.deleteWallet(id);
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @PutMapping("/updateWallet")
     public ResponseEntity<?> updatePortfolio(@RequestBody WalletDto walletDto) {
         walletService.updateWallet(walletDto);
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @GetMapping("/{walletName}")
@@ -46,7 +46,7 @@ public class WalletRestController {
     }
 
     @GetMapping("/wallets")
-    public ResponseEntity<?> getPortfolios(Principal user) {
+    public ResponseEntity<?> getWallets(Principal user) {
         List<WalletDto> portfolios = walletService.getWallets(user.getName());
         return ResponseEntity.ok(portfolios);
     }

@@ -12,13 +12,17 @@ public class MonthMapper {
 
     public static Month toEntity(MonthDto dto) {
         return Month.builder()
+                .id(dto.getId())
                 .monthName(dto.getMonthName())
+                .nrOfProjects(dto.getNrOfProjects())
                 .build();
     }
 
     public static MonthDto toDto(Month entity) {
         return MonthDto.builder()
+                .id(entity.getId())
                 .monthName(entity.getMonthName())
+                .nrOfProjects(entity.getNrOfProjects())
                 .build();
     }
 
