@@ -57,6 +57,11 @@
         vm.projects = $rootScope.globals.projects;
         vm.project = $rootScope.globals.project;
 
+        function saveProject(r, c) {
+            var data = this.getDataAtRow(r);
+            $rootScope.$broadcast('project1', vm.project);
+        }
+
         var dataObject = [];
         var dataObject2 = [];
         for(var key in vm.projects) {
@@ -209,31 +214,14 @@
             },
             exportFile: true,
             className: 'htCenter',
-            afterChange:  function(change, src) {
-                if (src === 'edit') {
-                    console.log(src);
-                    var td = $(hot.getCell(change[0][0], change[0][1], false));
-                    //td.setAttribute("style", "backgroundColor: #b7e0f4 !important");
-                }
-            },
             afterSelection: saveProject,
             licenseKey: 'non-commercial-and-evaluation'
         };
         var hot = new Handsontable(hotElement, hotSettings);
-        function saveProject(r, c) {
-            var data = this.getDataAtRow(r);
-            $rootScope.$broadcast('project1', vm.project);
-        }
-        /*hot.addHook('afterChange', function(change, src) {
-            if (src === 'edit') {
-                console.log(src);
-                var td = $(hot.getCell(change[0][0], change[0][1], false));
-                td.setclassName = 'good';
-                hot.render();
-            }
-        })*/
-        document.getElementById("export-csv").addEventListener("click", function(event) { hot.getPlugin("exportFile").downloadFile("csv", {filename: "Handsontable CSV Export example"});})
-        document.getElementById("export-string").addEventListener("click", function(event) {console.log(hot.getPlugin("exportFile").exportAsString("csv"));});
+        document.getElementById("export-csv").addEventListener("click",
+            function(event) { hot.getPlugin("exportFile").downloadFile("csv", {filename: "Handsontable CSV Export example"});})
+        document.getElementById("export-string").addEventListener("click",
+            function(event) {console.log(hot.getPlugin("exportFile").exportAsString("csv"));});
     }
 
 })();
