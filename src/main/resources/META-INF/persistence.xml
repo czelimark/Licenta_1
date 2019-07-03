@@ -11,7 +11,6 @@
         <class>data_layer.domain.Currency</class>
         <class>data_layer.domain.Month</class>
         <class>data_layer.domain.Project</class>
-        <class>data_layer.domain.ProjectResource</class>
         <class>data_layer.domain.Wallet</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

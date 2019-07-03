@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity(name = "Costs")
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"costType"})})
 @Getter
 @Setter
 @Builder
@@ -20,16 +19,28 @@ public class Cost implements Comparable<Cost> {
     private Integer id;
 
     @NotNull
-    @Size(min = 3)
-    private String costType;
+    @ManyToOne
+    @JoinColumn(name="idProject", nullable=false)
+    private Project project;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name="idResource", nullable=false)
+    private Resource resource;
+
+    @NotNull
+    @Size(max = 100)
+    private String description;
+
+    private Integer quantity;
 
     @NotNull
     private Double cost;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name="idProject", nullable=false)
-    private Project project;
+    @JoinColumn(name="idCurrency", nullable = false)
+    private Currency currency;
 
     @Override
     public int compareTo(Cost c) {

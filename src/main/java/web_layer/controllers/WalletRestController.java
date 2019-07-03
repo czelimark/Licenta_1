@@ -40,9 +40,10 @@ public class WalletRestController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @GetMapping("/{walletName}")
-    public WalletDto getPortfolio(@PathVariable Integer id) {
-        return walletService.getWallet(id);
+    @GetMapping("/wallet/{id}")
+    public ResponseEntity<?> getWallet(@PathVariable String id) {
+        WalletDto wallet = walletService.getWallet(Integer.valueOf(id));
+        return ResponseEntity.ok(wallet);
     }
 
     @GetMapping("/wallets")

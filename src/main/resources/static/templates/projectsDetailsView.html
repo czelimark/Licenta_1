@@ -7,8 +7,7 @@
     <div class="collapse navbar-collapse justify-content-between" id="navbar">
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="#!/projects">Project</a>
-            <a class="nav-item active nav-link" href="#!/projectDetails">Project Details<span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#!/resources">Resources</a>
+            <a class="nav-item active nav-link" href="#!/projectDetails">Projects Details<span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="#!/costs">Costs</a>
         </div>
         <div class="navbar-nav">
@@ -19,7 +18,8 @@
 
 <div id="hot" class="d-flex align-items-center justify-content-center"></div>
 <div id="export-buttons" class="visible">
-    <button class="btn size-medium bg-blue text-white shadow hover-moveup" style="margin-right: 5px;">Update Project</button>
+    <button type="submit" class="btn size-medium bg-blue text-white shadow hover-moveup" style="margin-right: 5px;" ng-click="vm.updateProject()">Update Project</button>
+    <button type="submit" class="btn delete size-medium bg-blue text-white shadow hover-moveup" style="margin-right: 5px;" ng-click="vm.deleteProject()">Delete Project</button>
     <button id="export-csv" class="btn size-medium bg-blue text-white shadow hover-moveup" style="margin-right: 5px;">Export to a .csv file</button>
     <button id="export-string" class="btn size-medium bg-green text-white shadow hover-moveup">Export to string (see the browser console)</button>
 </div>

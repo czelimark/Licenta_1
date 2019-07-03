@@ -34,7 +34,13 @@ public class ProjectRestController {
 
     @PutMapping("/updateProject")
     public ResponseEntity<?> updateProject(@RequestBody ProjectDto projectDto) {
-        projectService.updateProject(projectDto);
+        projectService.updateProject(projectDto, null, null);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @PutMapping("/updateProjectTable/{idP}/{idW}")
+    public ResponseEntity<?> updateProjectTable(@RequestBody ProjectDto projectDto, @PathVariable String idP, @PathVariable String idW) {
+        projectService.updateProject(projectDto, Integer.valueOf(idP), Integer.valueOf(idW));
         return ResponseEntity.ok(HttpStatus.OK);
     }
 

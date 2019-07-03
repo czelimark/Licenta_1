@@ -14,7 +14,6 @@ public class ResourceMapper {
         return Resource.builder()
                 .id(dto.getId())
                 .resourceName(dto.getResourceName())
-                .resourceUsage(dto.getResourceUsage())
                 .build();
     }
 
@@ -22,7 +21,6 @@ public class ResourceMapper {
         return ResourceDto.builder()
                 .id(entity.getId())
                 .resourceName(entity.getResourceName())
-                .resourceUsage(entity.getResourceUsage())
                 .build();
     }
 

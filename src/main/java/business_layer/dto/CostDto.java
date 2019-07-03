@@ -18,14 +18,22 @@ public class CostDto implements Comparable<CostDto>, Serializable {
     private Integer id;
 
     @NotNull
-    @Size(min = 3)
-    private String costType;
+    private ProjectDto project;
+
+    @NotNull
+    private ResourceDto resource;
+
+    @NotNull
+    @Size(max = 100)
+    private String description;
+
+    private Integer quantity;
 
     @NotNull
     private Double cost;
 
     @NotNull
-    private ProjectDto project;
+    private CurrencyDto currency;
 
     @Override
     public int compareTo(CostDto c) {

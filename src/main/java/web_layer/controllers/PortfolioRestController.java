@@ -2,6 +2,7 @@ package web_layer.controllers;
 
 import business_layer.dto.PortfolioDto;
 import business_layer.services.IPortfolioService;
+import com.sun.net.httpserver.HttpsConfigurator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,8 +41,9 @@ public class PortfolioRestController {
     }
 
     @GetMapping("/portfolio/{id}")
-    public PortfolioDto getPortfolio(@PathVariable String id) {
-        return portfolioService.getPortfolio(Integer.valueOf(id));
+    public ResponseEntity<?> getPortfolio(@PathVariable String id) {
+        PortfolioDto portfolio = portfolioService.getPortfolio(Integer.valueOf(id));
+        return ResponseEntity.ok(portfolio);
     }
 
     @GetMapping("/portfolios")

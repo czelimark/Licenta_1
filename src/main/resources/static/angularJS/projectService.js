@@ -13,6 +13,7 @@
         service.Delete = Delete;
         service.GetAllProjects = GetAllProjects;
         service.Update = Update;
+        service.UpdateProjectTable = UpdateProjectTable;
 
         return service;
 
@@ -49,6 +50,20 @@
                 method: 'PUT',
                 url: '/app/updateProject',
                 data: project,
+                headers: {
+                    "Content-Type": "application/json;charset=UTF-8"
+                }
+            })
+                .then(function (response) {
+                    callback(response);
+                });
+        }
+
+        function UpdateProjectTable(project, portfolioId, walletId, callback) {
+            return $http({
+                method: 'PUT',
+                url: '/app/updateProjectTable/' + portfolioId + '/' + walletId,
+                data: project, portfolioId, walletId,
                 headers: {
                     "Content-Type": "application/json;charset=UTF-8"
                 }

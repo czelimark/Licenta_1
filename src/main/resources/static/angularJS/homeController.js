@@ -62,7 +62,7 @@
             HomeService.updateUserr(profilePhoto, $rootScope.globals.currentUser.username, function (response) {
                 if (response.status == 200) {
                 } else {
-                    FlashService.Error("Password does not match current password");
+                    FlashService.Error("Profile picture couldn't be updated");
                     vm.dataLoading = false;
                 }
             });

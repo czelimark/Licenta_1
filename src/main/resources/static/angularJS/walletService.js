@@ -14,6 +14,7 @@
         service.GetAllWallets = GetAllWallets;
         service.Update = Update;
         service.GetAllCurrencies = GetAllCurrencies;
+        service.GetWallet = GetWallet;
 
         return service;
 
@@ -64,6 +65,18 @@
                 method: 'GET',
                 url: '/app/wallets',
                 data: user,
+                headers: {
+                    "Content-Type": "application/json;charset=UTF-8"
+                }
+            })
+                .then(handleSuccess, handleError('Error getting wallets'));
+        }
+
+        function GetWallet(wallet) {
+            return $http({
+                method: 'GET',
+                url: '/app/wallet/' + wallet,
+                data: wallet,
                 headers: {
                     "Content-Type": "application/json;charset=UTF-8"
                 }

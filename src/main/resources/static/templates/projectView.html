@@ -87,6 +87,7 @@
                         <div class="col-md-4">ID: {{ project.id }}</div>
                         <div class="col-md-4">Description: {{ project.description }}</div>
                         <div class="col-md-4">Wallet: {{ project.wallet.id }}</div>
+                        <div hidden class="col-md-4">Portfolio: {{ project.portfolio.id }}</div>
                     </div> <!-- /row -body- -->
                     <div class="row project-footer">
                         <div class="col-md-1"><br /><span class="project-delete fa fa-trash-o" ng-click="vm.deleteProject(project)"></span></div>
@@ -96,6 +97,9 @@
                         </div> <!-- /row -footer- -->
                         <div class="col closing-date"><br />
                             Closing Date: {{ project.closingDate }}
+                        </div> <!-- /row -footer- -->
+                        <div hidden class="col issue-date"><br />
+                            Comments : {{project.comments}}
                         </div> <!-- /row -footer- -->
                     </div>
                 </div>

@@ -22,10 +22,6 @@ public class ResourceDto implements Comparable<ResourceDto>, Serializable {
     @Size(min = 1, max = 100)
     private String resourceName;
 
-    @NotNull
-    @Size(max = 100)
-    private String resourceUsage;
-
     @Override
     public int compareTo(ResourceDto r) {
         return this.id.compareTo(r.id);

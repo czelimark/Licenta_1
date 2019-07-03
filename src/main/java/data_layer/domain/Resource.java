@@ -24,10 +24,6 @@ public class Resource implements Comparable<Resource> {
     @Size(min = 1, max = 100)
     private String resourceName;
 
-    @NotNull
-    @Size(max = 100)
-    private String resourceUsage;
-
     @Override
     public int compareTo(Resource r) {
         return this.id.compareTo(r.id);

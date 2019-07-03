@@ -77,6 +77,7 @@
                 vm.dataLoading = false;
             }
             else {
+                vm.project.portfolio = $rootScope.globals.portfolio;
                 ProjectService.Create(vm.project, function (response) {
                     if (response.status == 200) {
                         FlashService.Success('Project added');

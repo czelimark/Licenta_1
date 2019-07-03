@@ -13,6 +13,7 @@
         service.Delete = Delete;
         service.GetAllPortfolios = GetAllPortfolios;
         service.Update = Update;
+        service.GetPortfolio = GetPortfolio;
 
         return service;
 
@@ -68,6 +69,18 @@
                 }
             })
                 .then(handleSuccess, handleError('Error getting portfolios'));
+        }
+
+        function GetPortfolio(portfolio) {
+            return $http({
+                method: 'GET',
+                url: '/app/portfolio/' + portfolio,
+                data: portfolio,
+                headers: {
+                    "Content-Type": "application/json;charset=UTF-8"
+                }
+            })
+                .then(handleSuccess, handleError('Error getting portfolio'));
         }
 
         // private functions

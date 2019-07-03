@@ -10,7 +10,7 @@ public interface IProjectService {
 
     List<ProjectDto> getProjects(Integer id);
 
-    void updateProject(ProjectDto projectDto);
+    void updateProject(ProjectDto projectDto, Integer portfolioId, Integer walletId);
 
     void deleteProject(Integer id);
 

@@ -2,6 +2,11 @@ a {
     cursor: pointer;
 }
 
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
 .jumbotron {
     height: 100vh;
     margin-bottom: -20px;
@@ -105,5 +110,5 @@ a {
 
 #hot {
     margin-left: 100px;
-    margin-tip: 20px;
+    margin-top: 20px;
 }
