@@ -181,7 +181,7 @@
                 {
                     data: 'id',
                     type: 'numeric',
-                    width: 40,
+                    width: 45,
                     readOnly: true
                 },
                 {
@@ -234,12 +234,12 @@
                 },
                 {
                     data: 'portfolioId',
-                    type: 'text',
+                    type: 'numeric',
                     readOnly: true
                 },
                 {
                     data: 'walletId',
-                    type: 'text'
+                    type: 'numeric'
                 }
             ],
             stretchH: 'all',

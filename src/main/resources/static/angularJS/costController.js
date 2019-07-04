@@ -6,11 +6,12 @@
         .controller('CostController', CostController);
 
     CostController.$inject = ['CostService', 'ProjectService', 'WalletService', '$window', '$rootScope', 'FlashService'];
-    function ProjectsDetailsController(CostService, ProjectService, WalletService, $window, $rootScope, FlashService) {
+    function CostController(CostService, ProjectService, WalletService, $window, $rootScope, FlashService) {
         var vm = this;
 
         vm.cost = {};
         vm.costs = [];
+        vm.project = {};
         vm.projects = [];
         vm.resources = [];
         vm.currencies = [];
@@ -51,16 +52,24 @@
         }
 
         function loadProjects() {
-            ProjectService.GetAllProjects($rootScope.globals.portfolio.id)
-                .then(function (projects) {
-                    vm.projects = projects
-                });
+            if(!$rootScope.globals.portfolio) {
+                ProjectService.GetAllProjects($rootScope.$id)
+                    .then(function (projects) {
+                        vm.projects = projects
+                    });
+            }
+            else {
+                ProjectService.GetAllProjects($rootScope.globals.portfolio.id)
+                    .then(function (projects) {
+                        vm.projects = projects
+                    });
+            }
         }
 
         function loadResources() {
-            WalletService.GetAllWallets($rootScope.globals.currentUser.user)
-                .then(function (wallets) {
-                    vm.wallets = wallets
+            CostService.GetAllResources()
+                .then(function (resources) {
+                    vm.resources = resources
                 });
         }
 
@@ -83,7 +92,15 @@
 
         function updateCost() {
             vm.dataLoading = true;
-            CostService.UpdateCostTable($rootScope.globals.cost, $rootScope.globals.projectId, $rootScope.globals.resourceId, $rootScope.globals.currencyId, function (response) {
+            if(!$rootScope.globals.cost.id) {
+                CostService.Create($rootScope.globals.cost, $rootScope.globals.projectId, $rootScope.globals.resourceId, $rootScope.globals.currencyId, function (response) {
+                    if(response.status != 200) {
+                        FlashService.Error(response.message);
+                        vm.dataLoading = false;
+                    }
+                });
+            }
+            CostService.Update($rootScope.globals.cost, $rootScope.globals.projectId, $rootScope.globals.resourceId, $rootScope.globals.currencyId, function (response) {
                 if (response.status == 200) {
                     loadCurrentPortfolioProjectsCosts();
                 }
@@ -140,11 +157,11 @@
                                 break;
                             }
                             case "project": {
-                                Object.assign(dataObject2, {projectId: Object.values(vm.costs[key][key2])[0]});
+                                Object.assign(dataObject2, {projectId: vm.costs[key][key2]['id']});
                                 break;
                             }
                             case "resource": {
-                                Object.assign(dataObject2, {resourceId: Object.values(vm.costs[key][key2])[0]});
+                                Object.assign(dataObject2, {resourceId: vm.costs[key][key2]['id']});
                                 break;
                             }
                             case "description": {
@@ -160,7 +177,7 @@
                                 break;
                             }
                             case "currency": {
-                                Object.assign(dataObject2, {currency: Object.values(vm.costs[key][key2]['currency']['currencyName'])});
+                                Object.assign(dataObject2, {currency: Object.values(vm.costs[key][key2]['currencyName'])});
                                 dataObject2.currency = dataObject2.currency.join("");
                                 break;
                             }
@@ -179,16 +196,16 @@
                 {
                     data: 'id',
                     type: 'numeric',
-                    width: 40,
+                    width: 45,
                     readOnly: true
                 },
                 {
-                    data: 'project',
+                    data: 'projectId',
                     type: 'numeric',
                     readOnly: true
                 },
                 {
-                    data: 'resource',
+                    data: 'resourceId',
                     type: 'numeric',
                     readOnly: true
                 },
@@ -209,12 +226,12 @@
                 },
                 {
                     data: 'currency',
-                    type: 'text',
+                    type: 'text'
                 }
             ],
             stretchH: 'all',
-            width: 800,
-            height: 500,
+            width: 858,
+            height: 280,
             manualRowResize: true,
             manualColumnResize: true,
             rowHeaders: true,

@@ -1,6 +1,7 @@
 package web_layer.controllers;
 
 import business_layer.dto.CostDto;
+import business_layer.dto.ResourceDto;
 import business_layer.services.ICostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,9 +21,9 @@ public class CostRestController {
         this.costService = costService;
     }
 
-    @PutMapping("/addCost")
-    public ResponseEntity<?> putCost(@RequestBody CostDto costDto) {
-        costService.addCost(costDto);
+    @PutMapping("/addCost/{idP}/{idR}/{name}")
+    public ResponseEntity<?> putCost(@RequestBody CostDto costDto, @PathVariable String idP, @PathVariable String idR, @PathVariable String name) {
+        costService.addCost(costDto, Integer.valueOf(idP), Integer.valueOf(idR), name);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
@@ -32,9 +33,9 @@ public class CostRestController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @PutMapping("/updateCost/{idP}/{idR}/{idC}")
-    public ResponseEntity<?> updateCost(@RequestBody CostDto costDto, @PathVariable String idP, @PathVariable String idR, @PathVariable String idC) {
-        costService.updateCost(costDto, Integer.valueOf(idP), Integer.valueOf(idR), Integer.valueOf(idC));
+    @PutMapping("/updateCost/{idP}/{idR}/{name}")
+    public ResponseEntity<?> updateCost(@RequestBody CostDto costDto, @PathVariable String idP, @PathVariable String idR, @PathVariable String name) {
+        costService.updateCost(costDto, Integer.valueOf(idP), Integer.valueOf(idR), name);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
@@ -44,9 +45,15 @@ public class CostRestController {
         return ResponseEntity.ok(cost);
     }
 
-    @GetMapping("/costs/{id}")
+    @GetMapping("/costs/{portfolioId}")
     public ResponseEntity<?> getCosts(@PathVariable String portfolioId) {
         List<CostDto> costs = costService.getCosts(Integer.valueOf(portfolioId));
         return ResponseEntity.ok(costs);
+    }
+
+    @GetMapping("/resources")
+    public ResponseEntity<?> getResources() {
+        List<ResourceDto> resources = costService.getResources();
+        return ResponseEntity.ok(resources);
     }
 }

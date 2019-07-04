@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 
 @Getter
 @Setter
@@ -51,7 +50,7 @@ public class UserDto implements Comparable<UserDto>, Serializable {
     private String role;
 
     @Builder
-    public UserDto(Integer id, String username, String password, String lastName, String firstName, Date birthDate, Boolean gender, String phoneNumber, String profilePhoto, List<PortfolioDto> portfolios, List<WalletDto> wallets, String role) {
+    public UserDto(Integer id, String username, String password, String lastName, String firstName, Date birthDate, Boolean gender, String phoneNumber, String profilePhoto, String role) {
         this.id = id;
         this.username = username;
         this.password = password;

@@ -30,11 +30,10 @@
 
         <div class="col-sm-9">
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="true">Details</a>
-                <a class="nav-item nav-link" id="nav-invite-tab" data-toggle="tab" href="#nav-invite" role="tab" aria-controls="nav-invite" aria-selected="false">Invite</a>
+                <a class="nav-item nav-link active" id="nav-details-tab" data-toggle="tab" href="#!/nav-details" role="tab" aria-controls="nav-details" aria-selected="true">Details</a>
             </div>
             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
+                <div class="tab-pane fade show active" id="!/nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
                     <hr>
                     <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
                     <form name="form" ng-submit="vm.updatePassword()" role="form">
@@ -69,38 +68,32 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="form-group col-sm" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+                            <div class="form-group col-sm">
                                 <label for="password"><b>Password</b></label>
-                                <input type="password" name="password" id="password" class="form-control" ng-model="vm.password" required />
+                                <input type="password" name="password" id="password" class="form-control" ng-model="vm.password" />
                                 <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
                             </div>
-                            <div class="form-group col-sm" ng-class="{ 'has-error': form.newPassword.$dirty && form.newPassword.$error.required }">
+                            <div class="form-group col-sm">
                                 <label for="newPassword"><b>New Password</b></label>
-                                <input type="password" name="newPassword" id="newPassword" class="form-control" ng-model="vm.newPassword" required />
+                                <input type="password" name="newPassword" id="newPassword" class="form-control" ng-model="vm.newPassword" />
                             </div>
-                            <div class="form-group col-sm" ng-class="{ 'has-error': form.confirmPassword.$dirty && form.confirmPassword.$error.required }">
+                            <div class="form-group col-sm">
                                 <label for="confirmPassword"><b>Confirm Password</b></label>
-                                <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" ng-model="vm.confirmPassword" required />
+                                <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" ng-model="vm.confirmPassword" />
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="form-group col-sm" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
+                                <label for="email"><b>Email</b></label>
+                                <input type="text" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" name="email" id="email" class="form-control" ng-model="vm.email" required />
+                                <span ng-show="form.email.$dirty && form.email.$error.pattern" class="help-block">Email is not valid. Example: name@gmail.com</span>
+                            </div>
+                            <h5 class="col-sm" style="margin-top: 35px;">Invite a friend to manager his/her projects</h5><br />
+                        </div>
                         <div class="form-actions">
-                            <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                             <button type="submit" class="btn btn-primary" ng-click="vm.clearFields()">Cancel</button>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="tab-pane fade show" id="nav-invite" role="tabpanel" aria-labelledby="nav-invite-tab">
-                    <hr>
-                    <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
-                    <form name="form" ng-submit="vm.sendEmail()" role="form">
-                        <div class="form-group" ng-class="{ 'has-error': form.email.$error.required }">
-                            <h2>Invite a friend to collaborate with</h2><br />
-                            <label for="email"><b>Email</b></label>
-                            <input type="text" name="email" id="email" class="form-control" ng-model="vm.email" required />
-                        </div>
-                        <div class="form-actions">
-                            <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Send</button>
+                            <button type="submit" class="btn btn-primary" ng-click="vm.sendMail()">Send</button>
                         </div>
                     </form>
                 </div>

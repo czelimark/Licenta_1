@@ -1,7 +1,11 @@
 package business_layer.services.impl;
 
 import business_layer.dto.CostDto;
+import business_layer.dto.ResourceDto;
 import business_layer.mappers.CostMapper;
+import business_layer.mappers.CurrencyMapper;
+import business_layer.mappers.ProjectMapper;
+import business_layer.mappers.ResourceMapper;
 import business_layer.services.ICostService;
 import data_layer.domain.*;
 import data_layer.repositories.*;
@@ -41,7 +45,7 @@ public class CostService implements ICostService {
     }
 
     @Override
-    public void updateCost(CostDto costDto, Integer projectId, Integer resourceId, Integer currencyId) {
+    public void updateCost(CostDto costDto, Integer projectId, Integer resourceId, String currencyName) {
         Cost cost = costRepository.findById(costDto.getId()).orElseThrow(ResourceNotFoundException::new);
         Project project = projectRepository.findById(projectId).orElseThrow(ResourceNotFoundException::new);
         cost.setProject(project);
@@ -50,7 +54,7 @@ public class CostService implements ICostService {
         cost.setDescription(costDto.getDescription());
         cost.setQuantity(costDto.getQuantity());
         cost.setCost(costDto.getCost());
-        Currency currency = currencyRepository.findById(currencyId).orElseThrow(ResourceNotFoundException::new);
+        Currency currency = currencyRepository.findByName(currencyName).orElseThrow(ResourceNotFoundException::new);
         cost.setCurrency(currency);
         costRepository.flush();
     }
@@ -62,9 +66,21 @@ public class CostService implements ICostService {
     }
 
     @Override
-    public void addCost(CostDto costDto) {
+    public void addCost(CostDto costDto, Integer idP, Integer idR, String name) {
+        Project project = projectRepository.findById(idP).orElseThrow(ResourceNotFoundException::new);
+        Resource resource = resourceRepository.findById(idR).orElseThrow(ResourceNotFoundException::new);
+        Currency currency = currencyRepository.findByName(name).orElseThrow(ResourceNotFoundException::new);
+        costDto.setProject(ProjectMapper.toDto(project));
+        costDto.setResource(ResourceMapper.toDto(resource));
+        costDto.setCurrency(CurrencyMapper.toDto(currency));
         Cost cost = CostMapper.toEntity(costDto);
         costRepository.save(cost);
         costRepository.flush();
+    }
+
+    @Override
+    public List<ResourceDto> getResources() {
+        List<Resource> resources = resourceRepository.findAll();
+        return ResourceMapper.toDtoList(resources);
     }
 }

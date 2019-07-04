@@ -12,6 +12,7 @@
         service.Update = Update;
         service.GetUserByUsername = GetUserByUsername;
         service.updateUserr = updateUserr;
+        service.Send = Send;
 
         return service;
 
@@ -54,6 +55,20 @@
             })
                 .then(function (response) {
                     callback(response);
+                });
+        }
+
+        function Send(user, to, callback) {
+            return $http({
+                method: 'GET',
+                url: '/app/email/' + to,
+                data: user, to,
+                headers: {
+                    "Content-Type": "application/json;charset=UTF-8"
+                }
+            })
+                .then(function (response) {
+                    callback(response)
                 });
         }
 

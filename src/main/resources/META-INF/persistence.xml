@@ -21,4 +21,24 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
         </properties>
     </persistence-unit>
+
+    <persistence-unit name="test-persistence-unit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>data_layer.domain.Resource</class>
+        <class>data_layer.domain.User</class>
+        <class>data_layer.domain.Portfolio</class>
+        <class>data_layer.domain.Cost</class>
+        <class>data_layer.domain.Currency</class>
+        <class>data_layer.domain.Month</class>
+        <class>data_layer.domain.Project</class>
+        <class>data_layer.domain.Wallet</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Licenta_test"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="comeon183764"/>
+            <property name="show_sql" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+        </properties>
+    </persistence-unit>
 </persistence>

@@ -52,7 +52,7 @@ a.disabled {
 }
 
 .buttons {
-    margin-top: 33px;
+    margin-top: 28px;
     margin-left: inherit
 }
 
@@ -108,7 +108,12 @@ a.disabled {
     background: #b7e0f4 !important
 }
 
-#hot {
+.hot {
     margin-left: 100px;
     margin-top: 20px;
+}
+
+.hottie {
+    margin-left: 50px;
+    margin-top : 20px;
 }

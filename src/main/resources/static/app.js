@@ -39,6 +39,18 @@
                 controllerAs: 'vm'
             })
 
+            .when('/nav-details', {
+                controller: 'HomeController',
+                templateUrl: 'templates/homeView.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/nav-invite', {
+                controller: 'HomeController',
+                templateUrl: 'templates/homeView.html',
+                controllerAs: 'vm'
+            })
+
             .when('/projects', {
                 controller: 'ProjectController',
                 templateUrl: 'templates/projectView.html',

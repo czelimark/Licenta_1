@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface ICostRepository extends JpaRepository<Cost, Integer> {
 
-    @Query("SELECT c FROM Costs c inner join Projects p on c.project.id = p.id inner join Portfolios p2 on p.portfolio.id = p2.id WHERE p2.id = (?1)")
+    @Query("SELECT c FROM Costs c inner join Projects p on c.project = p inner join Portfolios p2 on p.portfolio = p2 WHERE p2.id = (?1)")
     List<Cost> findByPortfolio(Integer id);
 
     @Modifying

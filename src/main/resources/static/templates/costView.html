@@ -1,13 +1,14 @@
+<link rel="stylesheet" type="text/css" href="https://handsontable.com/static/css/main.css">
+
 <nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-between" id="navbar">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" href="#!/project">Project</a>
-            <a class="nav-item nav-link" href="#!/projectDetails">Projects Details</a>
+            <a class="nav-item nav-link" href="#!/projects">Project</a>
+            <a class="nav-item nav-link" href="#!/projectsDetails">Projects Details</a>
             <a class="nav-item active nav-link" href="#!/costs">Costs<span class="sr-only">(current)</span></a>
-            <a class="nav-item active nav-link disabled" href="#!/costs">Costs Details</a>
         </div>
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="#!/login">Logout</a></p>
@@ -15,10 +16,33 @@
     </div>
 </nav>
 
-<div id="hot" class="d-flex align-items-center justify-content-center"></div>
-<div id="export-buttons" class="visible">
-    <button type="submit" class="btn size-medium bg-blue text-white shadow hover-moveup" style="margin-right: 5px;" ng-click="vm.updateCost()">Update Cost</button>
-    <button type="submit" class="btn size-medium bg-blue text-white shadow hover-moveup" style="margin-right: 5px;" ng-click="vm.updateCost()">Delete Cost</button>
-    <button id="export-csv" class="btn size-medium bg-blue text-white shadow hover-moveup" style="margin-right: 5px;">Export to a .csv file</button>
-    <button id="export-string" class="btn size-medium bg-green text-white shadow hover-moveup">Export to string (see the browser console)</button>
+<div class="container-fluid content">
+    <div class="row">
+        <div class="col">
+            <div id="hot" class="hottie d-flex align-items-center justify-content-center"></div>
+            <div id="export-buttons" class="visible">
+                <button type="submit" class="btn size-medium bg-blue text-white shadow hover-moveup" style="margin-right: 5px;" ng-click="vm.updateCost()">Update Cost</button>
+                <button type="submit" class="btn size-medium bg-blue text-white shadow hover-moveup" style="margin-right: 5px;" ng-click="vm.deleteCost()">Delete Cost</button>
+                <button id="export-csv" class="btn size-medium bg-blue text-white shadow hover-moveup" style="margin-right: 5px;">Export to a .csv file</button>
+                <button id="export-string" class="btn size-medium bg-green text-white shadow hover-moveup">Export to string (see the browser console)</button>
+            </div>
+        </div>
+        <div class="col">
+            <h2>Information</h2>
+            <form name="form" class="form" role="form">
+                <div class="form-group">
+                    <label for="projects"><b>Projects</b></label>
+                    <select ng-options="project as project.id + ' ' + project.projectName for project in vm.projects" name="projects" id="projects" class="form-control" ng-model="vm.projects" readonly></select>
+                </div>
+                <div class="form-group">
+                    <label for="resources"><b>Resources</b></label>
+                    <select ng-options="resource as resource.id + ' ' + resource.resourceName for resource in vm.resources" name="resources" id="resources" class="form-control" ng-model="vm.resources" readonly></select>
+                </div>
+                <div class="form-group">
+                    <label for="currencies"><b>Currencies</b></label>
+                    <select ng-options="currency as currency.currencyName for currency in vm.currencies" name="currencies" id="currencies" class="form-control" ng-model="vm.currencies" readonly></select>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

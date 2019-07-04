@@ -12,4 +12,7 @@ public interface ICurrencyRepository extends JpaRepository<Currency, Integer> {
 
     @Query("SELECT c FROM Currencies c WHERE c.id = (?1)")
     Optional<Currency> findById(Integer id);
+
+    @Query("SELECT c FROM Currencies c WHERE c.currencyName = (?1)")
+    Optional<Currency> findByName(String currencyName);
 }

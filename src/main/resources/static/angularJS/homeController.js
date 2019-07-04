@@ -10,12 +10,14 @@
         var vm = this;
 
         vm.user = null;
+        vm.email = null;
 
         getUserByUsername();
         vm.getUserByUsername = getUserByUsername;
         vm.updatePassword = updatePassword;
         vm.clearFields = clearFields;
         vm.updateUser = updateUser;
+        vm.sendMail = sendMail;
 
         function getUserByUsername() {
             vm.dataLoading = true;
@@ -61,6 +63,19 @@
             vm.dataLoading = true;
             HomeService.updateUserr(profilePhoto, $rootScope.globals.currentUser.username, function (response) {
                 if (response.status == 200) {
+                    $window.reload();
+                } else {
+                    FlashService.Error("Profile picture couldn't be updated");
+                    vm.dataLoading = false;
+                }
+            });
+        }
+
+        function sendMail() {
+            vm.dataLoading = true;
+            HomeService.Send(vm.email, $rootScope.globals.currentUser.username, function(user) {
+                if (response.status == 200) {
+                    $window.reload();
                 } else {
                     FlashService.Error("Profile picture couldn't be updated");
                     vm.dataLoading = false;
